@@ -16,7 +16,7 @@ namespace assessment
         string latitude;
         string longitude;
         int numOfYears;
-        public Year[] years;
+        private Year[] years;
 
         // Constructor
         public Location(string nameIn, string streetIn, string countryIn, string postcodeIn, string latitudeIn, string longitudeIn, int numOfYearsIn)
@@ -31,7 +31,7 @@ namespace assessment
             years = new Year[numOfYears];
         }
 
-        //
+        // 
 
         // Set location name
         public void SetName(string nameIn)
@@ -126,9 +126,9 @@ namespace assessment
         {
             return numOfYears;
         }
-        
+
         // Get a year
-        // When programming get, will need a loop
+        // note for self: will need a loop
         public Year GetYears(int currentYear)
         {
             return years[currentYear];

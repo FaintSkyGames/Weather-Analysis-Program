@@ -11,7 +11,7 @@ namespace assessment
         // All the objects required for the task
         int yearID;
         string description;
-        public MonthlyObservation[] monthObs = new MonthlyObservation[12];
+        private MonthlyObservation[] monthObs = new MonthlyObservation[12];
 
         // Constructor
         public Year(string descriptionIn, int idIn)
@@ -55,7 +55,7 @@ namespace assessment
         }
 
         // Get a monthly observation
-        // When programming get will need a loop
+        // note for self: will need a loop elsewhere
         public MonthlyObservation GetMonthObs(int currentMonth)
         {
             return monthObs[currentMonth];
