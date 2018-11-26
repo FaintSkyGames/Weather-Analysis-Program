@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace assessment
 {
-    class Location
+    public class Location
     {
         // All the objects required for the task
         string name;
@@ -83,6 +83,11 @@ namespace assessment
             years[currentYear] = yearIn;
         }
 
+        public void SetMonths(int currentYear, MonthlyObservation monthIn, int currentMonth)
+        {
+            years[currentYear].SetMonthObs(monthIn, currentMonth);
+        }
+
         //
 
         // Get location name
@@ -134,6 +139,12 @@ namespace assessment
             return years[currentYear];
         }
 
+        public int GetYearID(int currentYear)
+        {
+            return years[currentYear].GetYearID();
+        }
+
+        
 
     }
 

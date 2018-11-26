@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace assessment
 {
     public partial class Form1 : Form
     {
-        int numOfLoctions;
-        Location[] locations = new Location[0];
+        public static Form1 frm1Ref;
+        public int numOfLoctions;
+        public Location[] locations = new Location[0];
+        public int currentLocationNumber;
+        public int currentYearNumber;
+
 
         public Form1()
         {
+            frm1Ref = this;
             InitializeComponent();
         }
 
@@ -26,13 +24,13 @@ namespace assessment
         private void button1_Click(object sender, EventArgs e)
         {
             // Create stream reader
-            StreamReader sr = new StreamReader("README EXTENDED.txt");
+            StreamReader sr = new StreamReader("inputEXTENDED.txt");
 
             // Find how many locations there are
             numOfLoctions = Convert.ToInt32(sr.ReadLine());
 
             // For each location
-            for (int i = 0; i <= numOfLoctions; i++)
+            for (int i = 0; i < numOfLoctions; i++)
             {
                 // Resize the array
                 Array.Resize(ref locations, (i + 1));
@@ -48,7 +46,7 @@ namespace assessment
                     );
 
                 // For each year in location
-                for (int y = 0; y <= locations[i].GetNumOfYears(); y++)
+                for (int y = 0; y < locations[i].GetNumOfYears(); y++)
                 {
                     // Create a year
                     Year thisYear = new Year(
@@ -60,7 +58,7 @@ namespace assessment
                     locations[i].SetYears(thisYear, y);
 
                     // For each month in year
-                    for (int z = 0; z <= 12; z++)
+                    for (int z = 0; z < 12; z++)
                     {
                         // Reads the repeated year id
                         if (z != 0)
@@ -80,14 +78,81 @@ namespace assessment
                             );
 
                         // Add month to year
-                        locations[i].years[y].SetMonthObs(thisMonth, z);
+                        locations[i].SetMonths(y, thisMonth, z);
 
                     }
                 }
 
+            }
+
+            MessageBox.Show("Everything has been read in.");
+
+            OptionsForm f = new OptionsForm();
+            f.Show();
+            this.Hide();
+        }
 
 
+        //SetComboBoxLocations();
+    }
+        /*
+
+        public void SetComboBoxLocations()
+        {
+            for (int i = 0; i < numOfLoctions; i++)
+            {
+                cmbxLocations.Items.Add(locations[i].GetName());
             }
         }
+
+        public void SetComboBoxYears()
+        {
+            string currentLocation;
+            currentLocationNumber = -1;
+
+            do
+            {
+                currentLocationNumber += 1;
+                currentLocation = locations[currentLocationNumber].GetName();
+            } while (currentLocation != cmbxLocations.SelectedItem.ToString());
+
+            cmbxYear.Items.Clear();
+
+            for (int i = 0; i < locations[currentLocationNumber].GetNumOfYears(); i++)
+            {
+                cmbxYear.Items.Add(locations[currentLocationNumber].GetYearID(i));
+            }
+        }
+
+        public void SetComboBoxMonths()
+        {
+            int currentYear;
+            currentYearNumber = -1;
+
+            do
+            {
+                currentYearNumber += 1;
+                currentYear = locations[currentLocationNumber].GetYearID(currentYearNumber);
+            } while (currentYear.ToString() != cmbxYear.SelectedItem.ToString());
+
+            cmbxMonth.Items.Clear();
+
+            for (int i = 0; i < 12; i++)
+            {
+                cmbxMonth.Items.Add((i+1).ToString());
+            }
+        }
+
+
+        private void cmbxLocations_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetComboBoxYears();
+        }
+
+        private void cmbxYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetComboBoxMonths();
+        }
+        */
     }
-}
+

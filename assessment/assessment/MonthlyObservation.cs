@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace assessment
 {
-    class MonthlyObservation
+    public class MonthlyObservation
     {
         // All the objects required for the task
         int idNum;

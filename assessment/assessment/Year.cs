@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace assessment
 {
-    class Year
+    public class Year
     {
         // All the objects required for the task
         int yearID;
