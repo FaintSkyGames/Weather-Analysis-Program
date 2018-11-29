@@ -134,17 +134,10 @@ namespace assessment
 
         // Get a year
         // note for self: will need a loop
-        public Year GetYears(int currentYear)
+        public Year[] GetYears()
         {
-            return years[currentYear];
-        }
-
-        public int GetYearID(int currentYear)
-        {
-            return years[currentYear].GetYearID();
-        }
-
-        
+            return years;
+        }       
 
     }
 

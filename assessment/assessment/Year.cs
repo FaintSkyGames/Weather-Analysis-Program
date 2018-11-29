@@ -55,10 +55,9 @@ namespace assessment
         }
 
         // Get a monthly observation
-        // note for self: will need a loop elsewhere
-        public MonthlyObservation GetMonthObs(int currentMonth)
+        public MonthlyObservation[] GetMonthObs()
         {
-            return monthObs[currentMonth];
+            return monthObs;
         }
 
     }

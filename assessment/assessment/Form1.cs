@@ -9,8 +9,6 @@ namespace assessment
         public static Form1 frm1Ref;
         public int numOfLoctions;
         public Location[] locations = new Location[0];
-        public int currentLocationNumber;
-        public int currentYearNumber;
 
 
         public Form1()

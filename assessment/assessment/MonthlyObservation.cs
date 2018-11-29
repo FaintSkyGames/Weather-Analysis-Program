@@ -68,39 +68,39 @@ namespace assessment
         //
 
         // Get month id number
-        public void GetIDNum()
+        public int GetIDNum()
         {
-
+            return idNum;
         }
 
         // Get maximum temperature
-        public void GetMaxTemp()
+        public double GetMaxTemp()
         {
-
+            return maxTemp;
         }
 
         // Get minimum temperature
-        public void GetMinTemp()
+        public double GetMinTemp()
         {
-
+            return minTemp;
         }
 
         // Get number of days air frost
-        public void GetNumDaysFrost()
+        public int GetNumDaysFrost()
         {
-
+            return numDaysFrost;
         }
 
         // Get millimeters of rainfall
-        public void GetMilRain()
+        public double GetMilRain()
         {
-
+            return milRain;
         }
 
         // Get hours of sunshine
-        public void GetHoursSun()
+        public double GetHoursSun()
         {
-
+            return hoursSun;
         }
 
     }
