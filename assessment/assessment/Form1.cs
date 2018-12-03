@@ -7,7 +7,7 @@ namespace assessment
     public partial class Form1 : Form
     {
         public static Form1 frm1Ref;
-        public int numOfLoctions;
+        public int numOfLocations;
         public Location[] locations = new Location[0];
 
 
@@ -21,14 +21,22 @@ namespace assessment
         // Using one function to prevent parsing issues with streamreader
         private void button1_Click(object sender, EventArgs e)
         {
-            // Create stream reader
-            StreamReader sr = new StreamReader("inputEXTENDED.txt");
+            // Creates a file dialog
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            // Gives the file dialog a filter so only text files show
+            fileDialog.Filter = "Text Files|*.txt";
+            // Shows the dialog
+            fileDialog.ShowDialog();
+            string file = fileDialog.FileName;
+
+            // Create stream reader using the file selected
+            StreamReader sr = new StreamReader(file);
 
             // Find how many locations there are
-            numOfLoctions = Convert.ToInt32(sr.ReadLine());
+            numOfLocations = Convert.ToInt32(sr.ReadLine());
 
             // For each location
-            for (int i = 0; i < numOfLoctions; i++)
+            for (int i = 0; i < numOfLocations; i++)
             {
                 // Resize the array
                 Array.Resize(ref locations, (i + 1));
@@ -51,7 +59,7 @@ namespace assessment
                         sr.ReadLine(),
                         Convert.ToInt32(sr.ReadLine())
                         );
-                    
+
                     // Add year to location
                     locations[i].SetYears(thisYear, y);
 
@@ -66,7 +74,7 @@ namespace assessment
 
                         // Create a month
                         MonthlyObservation thisMonth = new MonthlyObservation(
-                            
+
                             Convert.ToInt32(sr.ReadLine()),
                             Convert.ToDouble(sr.ReadLine()),
                             Convert.ToDouble(sr.ReadLine()),
@@ -89,68 +97,7 @@ namespace assessment
             f.Show();
             this.Hide();
         }
-
-
-        //SetComboBoxLocations();
     }
-        /*
-
-        public void SetComboBoxLocations()
-        {
-            for (int i = 0; i < numOfLoctions; i++)
-            {
-                cmbxLocations.Items.Add(locations[i].GetName());
-            }
-        }
-
-        public void SetComboBoxYears()
-        {
-            string currentLocation;
-            currentLocationNumber = -1;
-
-            do
-            {
-                currentLocationNumber += 1;
-                currentLocation = locations[currentLocationNumber].GetName();
-            } while (currentLocation != cmbxLocations.SelectedItem.ToString());
-
-            cmbxYear.Items.Clear();
-
-            for (int i = 0; i < locations[currentLocationNumber].GetNumOfYears(); i++)
-            {
-                cmbxYear.Items.Add(locations[currentLocationNumber].GetYearID(i));
-            }
-        }
-
-        public void SetComboBoxMonths()
-        {
-            int currentYear;
-            currentYearNumber = -1;
-
-            do
-            {
-                currentYearNumber += 1;
-                currentYear = locations[currentLocationNumber].GetYearID(currentYearNumber);
-            } while (currentYear.ToString() != cmbxYear.SelectedItem.ToString());
-
-            cmbxMonth.Items.Clear();
-
-            for (int i = 0; i < 12; i++)
-            {
-                cmbxMonth.Items.Add((i+1).ToString());
-            }
-        }
-
-
-        private void cmbxLocations_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SetComboBoxYears();
-        }
-
-        private void cmbxYear_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SetComboBoxMonths();
-        }
-        */
-    }
+        
+}
 

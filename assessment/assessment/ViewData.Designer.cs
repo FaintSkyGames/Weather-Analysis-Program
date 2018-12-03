@@ -35,7 +35,11 @@
             this.cmbxYears = new System.Windows.Forms.ComboBox();
             this.lbMonth = new System.Windows.Forms.Label();
             this.cmbxMonths = new System.Windows.Forms.ComboBox();
-            this.txtBxData = new System.Windows.Forms.RichTextBox();
+            this.txtBxLocation = new System.Windows.Forms.RichTextBox();
+            this.txtBxYear = new System.Windows.Forms.RichTextBox();
+            this.txtBxMonth = new System.Windows.Forms.RichTextBox();
+            this.txtBxSearch = new System.Windows.Forms.TextBox();
+            this.lbSearch = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnMenu
@@ -108,21 +112,63 @@
             this.cmbxMonths.TabIndex = 6;
             this.cmbxMonths.SelectedIndexChanged += new System.EventHandler(this.cmbxMonths_SelectedIndexChanged);
             // 
-            // txtBxData
+            // txtBxLocation
             // 
-            this.txtBxData.Location = new System.Drawing.Point(291, 15);
-            this.txtBxData.Name = "txtBxData";
-            this.txtBxData.ReadOnly = true;
-            this.txtBxData.Size = new System.Drawing.Size(476, 413);
-            this.txtBxData.TabIndex = 7;
-            this.txtBxData.Text = "";
+            this.txtBxLocation.Location = new System.Drawing.Point(291, 15);
+            this.txtBxLocation.Name = "txtBxLocation";
+            this.txtBxLocation.ReadOnly = true;
+            this.txtBxLocation.Size = new System.Drawing.Size(476, 125);
+            this.txtBxLocation.TabIndex = 7;
+            this.txtBxLocation.Text = "";
+            // 
+            // txtBxYear
+            // 
+            this.txtBxYear.Location = new System.Drawing.Point(291, 154);
+            this.txtBxYear.Name = "txtBxYear";
+            this.txtBxYear.ReadOnly = true;
+            this.txtBxYear.Size = new System.Drawing.Size(476, 125);
+            this.txtBxYear.TabIndex = 8;
+            this.txtBxYear.Text = "";
+            // 
+            // txtBxMonth
+            // 
+            this.txtBxMonth.Location = new System.Drawing.Point(291, 302);
+            this.txtBxMonth.Name = "txtBxMonth";
+            this.txtBxMonth.ReadOnly = true;
+            this.txtBxMonth.Size = new System.Drawing.Size(476, 125);
+            this.txtBxMonth.TabIndex = 9;
+            this.txtBxMonth.Text = "";
+            // 
+            // txtBxSearch
+            // 
+            this.txtBxSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtBxSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtBxSearch.Location = new System.Drawing.Point(12, 154);
+            this.txtBxSearch.Name = "txtBxSearch";
+            this.txtBxSearch.Size = new System.Drawing.Size(199, 20);
+            this.txtBxSearch.TabIndex = 10;
+            this.txtBxSearch.TextChanged += new System.EventHandler(this.txtBxSearch_TextChanged);
+            // 
+            // lbSearch
+            // 
+            this.lbSearch.AutoSize = true;
+            this.lbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSearch.Location = new System.Drawing.Point(8, 120);
+            this.lbSearch.Name = "lbSearch";
+            this.lbSearch.Size = new System.Drawing.Size(125, 20);
+            this.lbSearch.TabIndex = 11;
+            this.lbSearch.Text = "Search Location";
             // 
             // ViewData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtBxData);
+            this.Controls.Add(this.lbSearch);
+            this.Controls.Add(this.txtBxSearch);
+            this.Controls.Add(this.txtBxMonth);
+            this.Controls.Add(this.txtBxYear);
+            this.Controls.Add(this.txtBxLocation);
             this.Controls.Add(this.cmbxMonths);
             this.Controls.Add(this.lbMonth);
             this.Controls.Add(this.cmbxYears);
@@ -146,6 +192,10 @@
         private System.Windows.Forms.ComboBox cmbxYears;
         private System.Windows.Forms.Label lbMonth;
         private System.Windows.Forms.ComboBox cmbxMonths;
-        private System.Windows.Forms.RichTextBox txtBxData;
+        private System.Windows.Forms.RichTextBox txtBxLocation;
+        private System.Windows.Forms.RichTextBox txtBxYear;
+        private System.Windows.Forms.RichTextBox txtBxMonth;
+        private System.Windows.Forms.TextBox txtBxSearch;
+        private System.Windows.Forms.Label lbSearch;
     }
 }
