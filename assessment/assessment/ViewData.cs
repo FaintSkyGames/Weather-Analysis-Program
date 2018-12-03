@@ -15,6 +15,7 @@ namespace assessment
         int curLocation;
         int curYear;
         int curMonth;
+        private bool flag;
 
         public ViewData()
         {
@@ -26,7 +27,7 @@ namespace assessment
         {
             OptionsForm f = new OptionsForm();
             f.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void SetCmbxLocations()

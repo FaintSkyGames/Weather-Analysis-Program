@@ -21,7 +21,21 @@ namespace assessment
         {
             ViewData f = new ViewData();
             f.Show();
-            this.Hide();
+            this.Close();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddData f = new AddData();
+            f.Show();
+            this.Close();
+        }
+
+        private void btnEditData_Click(object sender, EventArgs e)
+        {
+            EditData f = new EditData();
+            f.Show();
+            this.Close();
         }
     }
 }
