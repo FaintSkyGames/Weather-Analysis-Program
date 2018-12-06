@@ -69,6 +69,10 @@
             this.txtBxMaxTemp = new System.Windows.Forms.TextBox();
             this.txtBxMonthID = new System.Windows.Forms.TextBox();
             this.btnSaveMonth = new System.Windows.Forms.Button();
+            this.lbYearEdit = new System.Windows.Forms.Label();
+            this.cmbxSelectYear = new System.Windows.Forms.ComboBox();
+            this.cmbxSelectMonth = new System.Windows.Forms.ComboBox();
+            this.lbMonthEdit = new System.Windows.Forms.Label();
             this.gpBxLocation.SuspendLayout();
             this.gpBxYear.SuspendLayout();
             this.gpBxMonth.SuspendLayout();
@@ -262,6 +266,7 @@
             this.btnRemoveLocation.TabIndex = 0;
             this.btnRemoveLocation.Text = "Remove Location";
             this.btnRemoveLocation.UseVisualStyleBackColor = true;
+            this.btnRemoveLocation.Click += new System.EventHandler(this.btnRemoveLocation_Click);
             // 
             // gpBxYear
             // 
@@ -455,11 +460,53 @@
             this.btnSaveMonth.Text = "Save";
             this.btnSaveMonth.UseVisualStyleBackColor = true;
             // 
+            // lbYearEdit
+            // 
+            this.lbYearEdit.AutoSize = true;
+            this.lbYearEdit.Location = new System.Drawing.Point(368, 87);
+            this.lbYearEdit.Name = "lbYearEdit";
+            this.lbYearEdit.Size = new System.Drawing.Size(169, 13);
+            this.lbYearEdit.TabIndex = 30;
+            this.lbYearEdit.Text = "Which year would you like to edit?";
+            // 
+            // cmbxSelectYear
+            // 
+            this.cmbxSelectYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxSelectYear.FormattingEnabled = true;
+            this.cmbxSelectYear.Location = new System.Drawing.Point(560, 84);
+            this.cmbxSelectYear.Name = "cmbxSelectYear";
+            this.cmbxSelectYear.Size = new System.Drawing.Size(121, 21);
+            this.cmbxSelectYear.TabIndex = 31;
+            this.cmbxSelectYear.SelectedIndexChanged += new System.EventHandler(this.cmbxSelectYear_SelectedIndexChanged);
+            // 
+            // cmbxSelectMonth
+            // 
+            this.cmbxSelectMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxSelectMonth.FormattingEnabled = true;
+            this.cmbxSelectMonth.Location = new System.Drawing.Point(560, 118);
+            this.cmbxSelectMonth.Name = "cmbxSelectMonth";
+            this.cmbxSelectMonth.Size = new System.Drawing.Size(121, 21);
+            this.cmbxSelectMonth.TabIndex = 32;
+            this.cmbxSelectMonth.SelectedIndexChanged += new System.EventHandler(this.cmbxSelectMonth_SelectedIndexChanged);
+            // 
+            // lbMonthEdit
+            // 
+            this.lbMonthEdit.AutoSize = true;
+            this.lbMonthEdit.Location = new System.Drawing.Point(368, 121);
+            this.lbMonthEdit.Name = "lbMonthEdit";
+            this.lbMonthEdit.Size = new System.Drawing.Size(178, 13);
+            this.lbMonthEdit.TabIndex = 33;
+            this.lbMonthEdit.Text = "Which month would you like to edit?";
+            // 
             // EditData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbMonthEdit);
+            this.Controls.Add(this.cmbxSelectMonth);
+            this.Controls.Add(this.cmbxSelectYear);
+            this.Controls.Add(this.lbYearEdit);
             this.Controls.Add(this.gpBxMonth);
             this.Controls.Add(this.gpBxYear);
             this.Controls.Add(this.gpBxLocation);
@@ -524,5 +571,9 @@
         private System.Windows.Forms.TextBox txtBxMaxTemp;
         private System.Windows.Forms.TextBox txtBxMonthID;
         private System.Windows.Forms.Button btnSaveMonth;
+        private System.Windows.Forms.Label lbYearEdit;
+        private System.Windows.Forms.ComboBox cmbxSelectYear;
+        private System.Windows.Forms.ComboBox cmbxSelectMonth;
+        private System.Windows.Forms.Label lbMonthEdit;
     }
 }
