@@ -257,6 +257,7 @@
             this.btnSaveLocation.TabIndex = 1;
             this.btnSaveLocation.Text = "Save";
             this.btnSaveLocation.UseVisualStyleBackColor = true;
+            this.btnSaveLocation.Click += new System.EventHandler(this.btnSaveLocation_Click);
             // 
             // btnRemoveLocation
             // 
@@ -323,6 +324,7 @@
             this.btnSaveYear.TabIndex = 1;
             this.btnSaveYear.Text = "Save";
             this.btnSaveYear.UseVisualStyleBackColor = true;
+            this.btnSaveYear.Click += new System.EventHandler(this.btnSaveYear_Click);
             // 
             // btnRemoveYear
             // 
@@ -459,6 +461,7 @@
             this.btnSaveMonth.TabIndex = 1;
             this.btnSaveMonth.Text = "Save";
             this.btnSaveMonth.UseVisualStyleBackColor = true;
+            this.btnSaveMonth.Click += new System.EventHandler(this.btnSaveMonth_Click);
             // 
             // lbYearEdit
             // 
