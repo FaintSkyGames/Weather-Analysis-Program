@@ -12,11 +12,13 @@ namespace assessment
 {
     public partial class OptionsForm : Form
     {
+        // On load run this
         public OptionsForm()
         {
             InitializeComponent();
         }
 
+        // Load view data form
         private void btnViewData_Click(object sender, EventArgs e)
         {
             ViewData f = new ViewData();
@@ -24,6 +26,7 @@ namespace assessment
             this.Close();
         }
 
+        // Load add data form
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddData f = new AddData();
@@ -31,6 +34,7 @@ namespace assessment
             this.Close();
         }
 
+        // Load edit data form
         private void btnEditData_Click(object sender, EventArgs e)
         {
             EditData f = new EditData();

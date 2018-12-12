@@ -520,6 +520,7 @@
             this.Controls.Add(this.btnMenu);
             this.Name = "EditData";
             this.Text = "EditData";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EditData_FormClosed);
             this.gpBxLocation.ResumeLayout(false);
             this.gpBxLocation.PerformLayout();
             this.gpBxYear.ResumeLayout(false);

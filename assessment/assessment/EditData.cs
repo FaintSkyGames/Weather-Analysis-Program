@@ -17,10 +17,14 @@ namespace assessment
         private int curYear;
         private int curMonth;
 
+        // On load run this
         public EditData()
         {
             InitializeComponent();
+
             SetCmbxSelectLocation();
+
+            // Hide unnecessary objects
             gpBxLocation.Visible = false;
             gpBxYear.Visible = false;
             gpBxMonth.Visible = false;
@@ -30,13 +34,7 @@ namespace assessment
             lbYearEdit.Visible = false;
         }
 
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            OptionsForm f = new OptionsForm();
-            f.Show();
-            this.Close();
-        }
-
+        // Set combobox items with locations
         private void SetCmbxSelectLocation()
         {
             cmbxSelectLocation.Items.Clear();
@@ -47,9 +45,11 @@ namespace assessment
                 {
                     cmbxSelectLocation.Items.Add(Form1.frm1Ref.locations[i].GetName());
                 }
-                
+
             }
         }
+
+        // Set combobox items with years
         private void SetCmbxSelectYear()
         {
             cmbxSelectYear.Items.Clear();
@@ -62,6 +62,7 @@ namespace assessment
             }
         }
 
+        // Set combo box items with months
         private void SetCmbxSelectMonth()
         {
             cmbxSelectMonth.Items.Clear();
@@ -73,51 +74,97 @@ namespace assessment
 
         }
 
-        private void cmBxSelectLocation_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            curLocation = cmbxSelectLocation.SelectedIndex;
-            ShowLocationData();
-            SetCmbxSelectYear();
-        }
-
         // Shows the appropriate objects based on what you want to edit
         private void cmBxEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Hides all groups
             gpBxLocation.Visible = false;
             gpBxYear.Visible = false;
             gpBxMonth.Visible = false;
 
+            // If editing the location...
             if (cmBxEdit.Text == "Location")
             {
+                // ...show the location group
                 gpBxLocation.Visible = true;
+
+                // ...hide the year selection and label
                 cmbxSelectYear.Visible = false;
+                lbYearEdit.Visible = false;
+
+                // ...hide the month selection and label
                 cmbxSelectMonth.Visible = false;
                 lbMonthEdit.Visible = false;
-                lbYearEdit.Visible = false;
             }
+            // If editing the year...
             else if (cmBxEdit.Text == "Year")
             {
+                // ...show the year group
                 gpBxYear.Visible = true;
+
+                // ...show the year selection and label
                 cmbxSelectYear.Visible = true;
                 lbYearEdit.Visible = true;
+
+                // ...hide the month selection and label
                 cmbxSelectMonth.Visible = false;
                 lbMonthEdit.Visible = false;
             }
+            // If editing the month...
             else if (cmBxEdit.Text == "Month")
             {
+                // ...show the month group
                 gpBxMonth.Visible = true;
+
+                // ...show the year selection and label
                 cmbxSelectYear.Visible = true;
+                lbYearEdit.Visible = true;
+
+                // ...show the month selection and label
                 cmbxSelectMonth.Visible = true;
                 lbMonthEdit.Visible = true;
-                lbYearEdit.Visible = true;
             }
-                
+
         }
 
-        private void ShowLocationData()
+        // When the location selected is changed...
+        private void cmBxSelectLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
+            curLocation = cmbxSelectLocation.SelectedIndex;
+
+            // Set the location data text boxes
+            SetLocationTxtBx();
+            // Update the years combo box 
+            SetCmbxSelectYear();
+        }
+
+        // When the year selected is changed...
+        private void cmbxSelectYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            curYear = cmbxSelectYear.SelectedIndex;
+
+            // Set the year data text boxes
+            SetYearTxtBx();
+            // Update the month combo box 
+            SetCmbxSelectMonth();
+        }
+
+        // When the month selected is changed...
+        private void cmbxSelectMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            curMonth = cmbxSelectMonth.SelectedIndex;
+
+            // Set the month data text boxes
+            SetMonthTxtBx();
+        }
+
+        // Set the location data text boxes
+        private void SetLocationTxtBx()
+        {
+            // If nothing is selected...
             if (cmbxSelectLocation.SelectedIndex == -1)
             {
+                // ...set everything to empty
                 txtBxName.Text = "";
                 txtBxCountry.Text = "";
                 txtBxStreet.Text = "";
@@ -125,8 +172,10 @@ namespace assessment
                 txtBxLongitude.Text = "";
                 txtBxLatitude.Text = "";
             }
+            // If something is selected...
             else
             {
+                // ...set each text box to the corresponding value
                 txtBxName.Text = Form1.frm1Ref.locations[curLocation].GetName();
                 txtBxStreet.Text = Form1.frm1Ref.locations[curLocation].GetStreetName();
                 txtBxCountry.Text = Form1.frm1Ref.locations[curLocation].GetCountry();
@@ -136,24 +185,32 @@ namespace assessment
             }
         }
 
-        private void ShowYearData()
+        // Set the year data text boxes
+        private void SetYearTxtBx()
         {
+            // If nothing is selected...
             if (cmbxSelectYear.SelectedIndex == -1)
             {
+                // ...set everything to empty
                 txtBxYearID.Text = "";
                 txtBxDescription.Text = "";
             }
+            // If something is selected...
             else
             {
+                // ...set each text box to the corresponding value
                 txtBxYearID.Text = Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetYearID().ToString();
                 txtBxDescription.Text = Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetDescription();
             }
         }
 
-        private void ShowMonthData()
+        // Set the month data text boxes
+        private void SetMonthTxtBx()
         {
+            // If nothing is selected...
             if (cmbxSelectMonth.SelectedIndex == -1)
             {
+                // ...set everything to empty
                 txtBxMonthID.Text = "";
                 txtBxMaxTemp.Text = "";
                 txtBxMinTemp.Text = "";
@@ -161,8 +218,10 @@ namespace assessment
                 txtBxMilRain.Text = "";
                 txtBxHoursSun.Text = "";
             }
+            // If something is selected...
             else
             {
+                // ...set each text box to the corresponding value
                 txtBxMonthID.Text = Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetIDNum().ToString();
                 txtBxMaxTemp.Text = Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetMaxTemp().ToString();
                 txtBxMinTemp.Text = Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetMinTemp().ToString();
@@ -172,18 +231,7 @@ namespace assessment
             }
         }
 
-        private void cmbxSelectYear_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            curYear = cmbxSelectYear.SelectedIndex;
-            ShowYearData();
-            SetCmbxSelectMonth();
-        }
-
-        private void cmbxSelectMonth_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            curMonth = cmbxSelectMonth.SelectedIndex;
-            ShowMonthData();
-        }
+ 
 
         private void btnRemoveLocation_Click(object sender, EventArgs e)
         {
@@ -207,16 +255,41 @@ namespace assessment
 
         private void btnSaveLocation_Click(object sender, EventArgs e)
         {
-            Form1.frm1Ref.locations[curLocation].SetName(txtBxName.Text);
-            Form1.frm1Ref.locations[curLocation].SetStreetName(txtBxStreet.Text);
-            Form1.frm1Ref.locations[curLocation].SetCountry(txtBxCountry.Text);
-            Form1.frm1Ref.locations[curLocation].SetPostCode(txtBxPostcode.Text);
-            Form1.frm1Ref.locations[curLocation].SetLatitude(txtBxLatitude.Text);
-            Form1.frm1Ref.locations[curLocation].SetLongitude(txtBxLongitude.Text);
+            Boolean errorFound = false;
 
-            cmbxSelectLocation.SelectedIndex = -1;
-            SetCmbxSelectLocation();
+            // If the location name has been edited...
+            if (Form1.frm1Ref.locations[curLocation].GetName() != txtBxName.Text)
+            {
+                foreach (var location in Form1.frm1Ref.locations)
+                {
+                    // ...and the new name already exsists in the file...
+                    if (location.GetName() == txtBxName.Text)
+                    {
+                        // ...there is an error.
+                        errorFound = true;
+                    }
+                }
 
+            }
+
+            // If an error has been found...
+            if (errorFound)
+            {
+                // ...say there is an error
+                MessageBox.Show("There is already a location with this name.");
+            }
+            else
+            {
+                Form1.frm1Ref.locations[curLocation].SetName(txtBxName.Text);
+                Form1.frm1Ref.locations[curLocation].SetStreetName(txtBxStreet.Text);
+                Form1.frm1Ref.locations[curLocation].SetCountry(txtBxCountry.Text);
+                Form1.frm1Ref.locations[curLocation].SetPostCode(txtBxPostcode.Text);
+                Form1.frm1Ref.locations[curLocation].SetLatitude(txtBxLatitude.Text);
+                Form1.frm1Ref.locations[curLocation].SetLongitude(txtBxLongitude.Text);
+
+                cmbxSelectLocation.SelectedIndex = -1;
+                SetCmbxSelectLocation();
+            }
         }
 
         private void btnSaveMonth_Click(object sender, EventArgs e)
@@ -230,6 +303,19 @@ namespace assessment
 
             cmbxSelectMonth.SelectedIndex = -1;
             SetCmbxSelectMonth();
+        }
+
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            OptionsForm f = new OptionsForm();
+            f.Show();
+            this.Close();
+        }
+
+        private void EditData_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form1.frm1Ref.Close();
         }
     }
 }
