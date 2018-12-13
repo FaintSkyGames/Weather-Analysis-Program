@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace assessment
 {
@@ -315,7 +316,20 @@ namespace assessment
 
         private void EditData_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Form1.frm1Ref.Close();
+           
+            // string fileData = "";
+            StreamWriter sw = new StreamWriter("test.txt");
+
+            sw.WriteLine(Form1.frm1Ref.numOfLocations);
+
+            // fileData += Form1.frm1Ref.numOfLocations;
+
+            foreach (var location in Form1.frm1Ref.locations)
+            {
+                sw.WriteLine(location.GetName());
+            }
+
+            sw.Close();
         }
     }
 }

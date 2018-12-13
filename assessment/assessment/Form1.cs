@@ -9,6 +9,7 @@ namespace assessment
         public static Form1 frm1Ref;
         public int numOfLocations;
         public Location[] locations = new Location[0];
+        public string file;
 
 
         public Form1()
@@ -27,7 +28,7 @@ namespace assessment
             fileDialog.Filter = "Text Files|*.txt";
             // Shows the dialog
             fileDialog.ShowDialog();
-            string file = fileDialog.FileName;
+            file = fileDialog.FileName;
 
             // Create stream reader using the file selected
             StreamReader sr = new StreamReader(file);
