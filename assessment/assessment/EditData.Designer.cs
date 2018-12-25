@@ -39,6 +39,13 @@
             this.lbLatitude = new System.Windows.Forms.Label();
             this.txtBxLatitude = new System.Windows.Forms.TextBox();
             this.lbPostcode = new System.Windows.Forms.Label();
+            this.gpBxYear = new System.Windows.Forms.GroupBox();
+            this.lbDescription = new System.Windows.Forms.Label();
+            this.lbYearID = new System.Windows.Forms.Label();
+            this.txtBxDescription = new System.Windows.Forms.TextBox();
+            this.txtBxYearID = new System.Windows.Forms.TextBox();
+            this.btnSaveYear = new System.Windows.Forms.Button();
+            this.btnRemoveYear = new System.Windows.Forms.Button();
             this.lbCountry = new System.Windows.Forms.Label();
             this.lbStreet = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
@@ -48,13 +55,6 @@
             this.txtBxName = new System.Windows.Forms.TextBox();
             this.btnSaveLocation = new System.Windows.Forms.Button();
             this.btnRemoveLocation = new System.Windows.Forms.Button();
-            this.gpBxYear = new System.Windows.Forms.GroupBox();
-            this.lbDescription = new System.Windows.Forms.Label();
-            this.lbYearID = new System.Windows.Forms.Label();
-            this.txtBxDescription = new System.Windows.Forms.TextBox();
-            this.txtBxYearID = new System.Windows.Forms.TextBox();
-            this.btnSaveYear = new System.Windows.Forms.Button();
-            this.btnRemoveYear = new System.Windows.Forms.Button();
             this.gpBxMonth = new System.Windows.Forms.GroupBox();
             this.lbHoursSun = new System.Windows.Forms.Label();
             this.txtBxHoursSun = new System.Windows.Forms.TextBox();
@@ -194,6 +194,72 @@
             this.lbPostcode.TabIndex = 21;
             this.lbPostcode.Text = "Postcode:";
             // 
+            // gpBxYear
+            // 
+            this.gpBxYear.Controls.Add(this.lbDescription);
+            this.gpBxYear.Controls.Add(this.lbYearID);
+            this.gpBxYear.Controls.Add(this.txtBxDescription);
+            this.gpBxYear.Controls.Add(this.txtBxYearID);
+            this.gpBxYear.Controls.Add(this.btnSaveYear);
+            this.gpBxYear.Controls.Add(this.btnRemoveYear);
+            this.gpBxYear.Location = new System.Drawing.Point(24, 165);
+            this.gpBxYear.Name = "gpBxYear";
+            this.gpBxYear.Size = new System.Drawing.Size(234, 237);
+            this.gpBxYear.TabIndex = 28;
+            this.gpBxYear.TabStop = false;
+            this.gpBxYear.Text = "gpBxYear";
+            // 
+            // lbDescription
+            // 
+            this.lbDescription.AutoSize = true;
+            this.lbDescription.Location = new System.Drawing.Point(8, 59);
+            this.lbDescription.Name = "lbDescription";
+            this.lbDescription.Size = new System.Drawing.Size(63, 13);
+            this.lbDescription.TabIndex = 19;
+            this.lbDescription.Text = "Description:";
+            // 
+            // lbYearID
+            // 
+            this.lbYearID.AutoSize = true;
+            this.lbYearID.Location = new System.Drawing.Point(8, 33);
+            this.lbYearID.Name = "lbYearID";
+            this.lbYearID.Size = new System.Drawing.Size(46, 13);
+            this.lbYearID.TabIndex = 14;
+            this.lbYearID.Text = "Year ID:";
+            // 
+            // txtBxDescription
+            // 
+            this.txtBxDescription.Location = new System.Drawing.Point(97, 56);
+            this.txtBxDescription.Name = "txtBxDescription";
+            this.txtBxDescription.Size = new System.Drawing.Size(117, 20);
+            this.txtBxDescription.TabIndex = 16;
+            // 
+            // txtBxYearID
+            // 
+            this.txtBxYearID.Location = new System.Drawing.Point(97, 30);
+            this.txtBxYearID.Name = "txtBxYearID";
+            this.txtBxYearID.Size = new System.Drawing.Size(117, 20);
+            this.txtBxYearID.TabIndex = 15;
+            // 
+            // btnSaveYear
+            // 
+            this.btnSaveYear.Location = new System.Drawing.Point(164, 201);
+            this.btnSaveYear.Name = "btnSaveYear";
+            this.btnSaveYear.Size = new System.Drawing.Size(50, 23);
+            this.btnSaveYear.TabIndex = 1;
+            this.btnSaveYear.Text = "Save";
+            this.btnSaveYear.UseVisualStyleBackColor = true;
+            this.btnSaveYear.Click += new System.EventHandler(this.btnSaveYear_Click);
+            // 
+            // btnRemoveYear
+            // 
+            this.btnRemoveYear.Location = new System.Drawing.Point(11, 201);
+            this.btnRemoveYear.Name = "btnRemoveYear";
+            this.btnRemoveYear.Size = new System.Drawing.Size(102, 23);
+            this.btnRemoveYear.TabIndex = 0;
+            this.btnRemoveYear.Text = "Remove Year";
+            this.btnRemoveYear.UseVisualStyleBackColor = true;
+            // 
             // lbCountry
             // 
             this.lbCountry.AutoSize = true;
@@ -269,72 +335,6 @@
             this.btnRemoveLocation.UseVisualStyleBackColor = true;
             this.btnRemoveLocation.Click += new System.EventHandler(this.btnRemoveLocation_Click);
             // 
-            // gpBxYear
-            // 
-            this.gpBxYear.Controls.Add(this.lbDescription);
-            this.gpBxYear.Controls.Add(this.lbYearID);
-            this.gpBxYear.Controls.Add(this.txtBxDescription);
-            this.gpBxYear.Controls.Add(this.txtBxYearID);
-            this.gpBxYear.Controls.Add(this.btnSaveYear);
-            this.gpBxYear.Controls.Add(this.btnRemoveYear);
-            this.gpBxYear.Location = new System.Drawing.Point(274, 171);
-            this.gpBxYear.Name = "gpBxYear";
-            this.gpBxYear.Size = new System.Drawing.Size(234, 237);
-            this.gpBxYear.TabIndex = 28;
-            this.gpBxYear.TabStop = false;
-            this.gpBxYear.Text = "gpBxYear";
-            // 
-            // lbDescription
-            // 
-            this.lbDescription.AutoSize = true;
-            this.lbDescription.Location = new System.Drawing.Point(8, 59);
-            this.lbDescription.Name = "lbDescription";
-            this.lbDescription.Size = new System.Drawing.Size(63, 13);
-            this.lbDescription.TabIndex = 19;
-            this.lbDescription.Text = "Description:";
-            // 
-            // lbYearID
-            // 
-            this.lbYearID.AutoSize = true;
-            this.lbYearID.Location = new System.Drawing.Point(8, 33);
-            this.lbYearID.Name = "lbYearID";
-            this.lbYearID.Size = new System.Drawing.Size(46, 13);
-            this.lbYearID.TabIndex = 14;
-            this.lbYearID.Text = "Year ID:";
-            // 
-            // txtBxDescription
-            // 
-            this.txtBxDescription.Location = new System.Drawing.Point(97, 56);
-            this.txtBxDescription.Name = "txtBxDescription";
-            this.txtBxDescription.Size = new System.Drawing.Size(117, 20);
-            this.txtBxDescription.TabIndex = 16;
-            // 
-            // txtBxYearID
-            // 
-            this.txtBxYearID.Location = new System.Drawing.Point(97, 30);
-            this.txtBxYearID.Name = "txtBxYearID";
-            this.txtBxYearID.Size = new System.Drawing.Size(117, 20);
-            this.txtBxYearID.TabIndex = 15;
-            // 
-            // btnSaveYear
-            // 
-            this.btnSaveYear.Location = new System.Drawing.Point(164, 201);
-            this.btnSaveYear.Name = "btnSaveYear";
-            this.btnSaveYear.Size = new System.Drawing.Size(50, 23);
-            this.btnSaveYear.TabIndex = 1;
-            this.btnSaveYear.Text = "Save";
-            this.btnSaveYear.UseVisualStyleBackColor = true;
-            this.btnSaveYear.Click += new System.EventHandler(this.btnSaveYear_Click);
-            // 
-            // btnRemoveYear
-            // 
-            this.btnRemoveYear.Location = new System.Drawing.Point(11, 201);
-            this.btnRemoveYear.Name = "btnRemoveYear";
-            this.btnRemoveYear.Size = new System.Drawing.Size(102, 23);
-            this.btnRemoveYear.TabIndex = 0;
-            this.btnRemoveYear.Text = "Remove Year";
-            this.btnRemoveYear.UseVisualStyleBackColor = true;
-            // 
             // gpBxMonth
             // 
             this.gpBxMonth.Controls.Add(this.lbHoursSun);
@@ -350,7 +350,7 @@
             this.gpBxMonth.Controls.Add(this.txtBxMaxTemp);
             this.gpBxMonth.Controls.Add(this.txtBxMonthID);
             this.gpBxMonth.Controls.Add(this.btnSaveMonth);
-            this.gpBxMonth.Location = new System.Drawing.Point(524, 171);
+            this.gpBxMonth.Location = new System.Drawing.Point(24, 171);
             this.gpBxMonth.Name = "gpBxMonth";
             this.gpBxMonth.Size = new System.Drawing.Size(248, 237);
             this.gpBxMonth.TabIndex = 29;
