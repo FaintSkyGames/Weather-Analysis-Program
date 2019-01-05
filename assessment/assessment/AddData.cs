@@ -13,9 +13,24 @@ namespace assessment
 {
     public partial class AddData : Form
     {
+        private int curLocation;
+        private int curYear;
+
         public AddData()
         {
             InitializeComponent();
+
+            SetCmbxSelectToAddLocation();
+
+            // Hide unnecessary objects
+            gpBxLocation.Visible = false;
+            gpBxYear.Visible = false;
+            gpBxMonth.Visible = false;
+            cmbxSelectToAddLocation.Visible = false;
+            cmbxSelectToAddYear.Visible = false;
+            lbLocationAdd.Visible = false;
+            lbYearAdd.Visible = false;
+
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -25,6 +40,7 @@ namespace assessment
             this.Close();
         }
 
+        // Add data from a file
         private void btnAddFile_Click(object sender, EventArgs e)
         {
             // Creates a file dialog
@@ -102,6 +118,107 @@ namespace assessment
             OptionsForm f = new OptionsForm();
             f.Show();
             this.Close();
+        }
+
+        private void cmbxSelectToEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Hides all groups
+            gpBxLocation.Visible = false;
+            gpBxYear.Visible = false;
+            gpBxMonth.Visible = false;
+
+            // If adding a location...
+            if (cmbxSelectToEdit.Text == "Location")
+            {
+                // ...show the location group
+                gpBxLocation.Visible = true;
+
+                // ...hide the location selection and label
+                cmbxSelectToAddLocation.Visible = false;
+                lbLocationAdd.Visible = false;
+
+                // ...hide the year selection and label
+                cmbxSelectToAddYear.Visible = false;
+                lbYearAdd.Visible = false;
+
+            }
+            // If adding a year...
+            if (cmbxSelectToEdit.Text == "Year")
+            {
+                // ...show the year group
+                gpBxYear.Visible = true;
+
+                // ...show the location selection and label
+                cmbxSelectToAddLocation.Visible = true;
+                lbLocationAdd.Visible = true;
+
+                // ...hide the year selection and label
+                cmbxSelectToAddYear.Visible = false;
+                lbYearAdd.Visible = false;
+
+
+            }
+            if (cmbxSelectToEdit.Text == "Month")
+            {
+                // ...show the month group
+                gpBxMonth.Visible = true;
+
+                // ...show the location selection and label
+                cmbxSelectToAddLocation.Visible = true;
+                lbLocationAdd.Visible = true;
+
+                // ...show the year selection and label
+                cmbxSelectToAddYear.Visible = true;
+                lbYearAdd.Visible = true;
+
+
+            }
+
+        }
+
+        private void cmboBxSelectToAddLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            curLocation = cmbxSelectToAddLocation.SelectedIndex;
+            SetcmbxSelectToAddYear();
+        }
+
+        // Set combobox items with locations
+        private void SetCmbxSelectToAddLocation()
+        {
+            cmbxSelectToAddLocation.Items.Clear();
+
+            for (int i = 0; i < Form1.frm1Ref.numOfLocations; i++)
+            {
+                if (Form1.frm1Ref.locations[i] != null)
+                {
+                    cmbxSelectToAddLocation.Items.Add(Form1.frm1Ref.locations[i].GetName());
+                }
+
+            }
+        }
+
+        // Set combobox items with years
+        private void SetcmbxSelectToAddYear()
+        {
+            cmbxSelectToAddYear.Items.Clear();
+
+            if (cmbxSelectToAddLocation.SelectedIndex != -1)
+            {
+                foreach (var years in Form1.frm1Ref.locations[curLocation].GetYears())
+                {
+                    cmbxSelectToAddYear.Items.Add(years.GetYearID());
+                }
+            }
+        }
+
+
+
+
+
+        // empty
+        private void cmboBxSelectToAddYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

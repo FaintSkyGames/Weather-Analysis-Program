@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnMenu = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gpBxLocation = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -47,32 +47,32 @@
             this.btnAddFile = new System.Windows.Forms.Button();
             this.btnAddInput = new System.Windows.Forms.Button();
             this.lbAdd = new System.Windows.Forms.Label();
-            this.cmbxSelectToEdit = new System.Windows.Forms.ComboBox();
             this.lbLocationAdd = new System.Windows.Forms.Label();
-            this.cmboBxSelectToAddLocation = new System.Windows.Forms.ComboBox();
+            this.cmbxSelectToAddLocation = new System.Windows.Forms.ComboBox();
             this.lbYearAdd = new System.Windows.Forms.Label();
-            this.cmboBxSelectToAddYear = new System.Windows.Forms.ComboBox();
+            this.cmbxSelectToAddYear = new System.Windows.Forms.ComboBox();
             this.gpBxYear = new System.Windows.Forms.GroupBox();
             this.lbDescription = new System.Windows.Forms.Label();
             this.lbYearID = new System.Windows.Forms.Label();
             this.txtBxDescription = new System.Windows.Forms.TextBox();
             this.txtBxYearID = new System.Windows.Forms.TextBox();
-            this.gpbxMonth = new System.Windows.Forms.GroupBox();
+            this.gpBxMonth = new System.Windows.Forms.GroupBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.cmbxMonthID = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lbMonthID = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.groupBox1.SuspendLayout();
+            this.cmbxSelectToEdit = new System.Windows.Forms.ComboBox();
+            this.gpBxLocation.SuspendLayout();
             this.gpBxYear.SuspendLayout();
-            this.gpbxMonth.SuspendLayout();
+            this.gpBxMonth.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnMenu
@@ -85,28 +85,28 @@
             this.btnMenu.UseVisualStyleBackColor = true;
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
-            // groupBox1
+            // gpBxLocation
             // 
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Location = new System.Drawing.Point(24, 167);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(218, 254);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Location";
+            this.gpBxLocation.Controls.Add(this.label7);
+            this.gpBxLocation.Controls.Add(this.label6);
+            this.gpBxLocation.Controls.Add(this.textBox7);
+            this.gpBxLocation.Controls.Add(this.textBox6);
+            this.gpBxLocation.Controls.Add(this.label5);
+            this.gpBxLocation.Controls.Add(this.textBox5);
+            this.gpBxLocation.Controls.Add(this.label4);
+            this.gpBxLocation.Controls.Add(this.label3);
+            this.gpBxLocation.Controls.Add(this.label2);
+            this.gpBxLocation.Controls.Add(this.label1);
+            this.gpBxLocation.Controls.Add(this.textBox4);
+            this.gpBxLocation.Controls.Add(this.textBox3);
+            this.gpBxLocation.Controls.Add(this.textBox2);
+            this.gpBxLocation.Controls.Add(this.textBox1);
+            this.gpBxLocation.Location = new System.Drawing.Point(24, 167);
+            this.gpBxLocation.Name = "gpBxLocation";
+            this.gpBxLocation.Size = new System.Drawing.Size(218, 254);
+            this.gpBxLocation.TabIndex = 2;
+            this.gpBxLocation.TabStop = false;
+            this.gpBxLocation.Text = "Location";
             // 
             // label7
             // 
@@ -248,19 +248,6 @@
             this.lbAdd.TabIndex = 5;
             this.lbAdd.Text = "What would you like to add?";
             // 
-            // cmbxSelectToEdit
-            // 
-            this.cmbxSelectToEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbxSelectToEdit.FormattingEnabled = true;
-            this.cmbxSelectToEdit.Items.AddRange(new object[] {
-            "Location",
-            "Year",
-            "Month"});
-            this.cmbxSelectToEdit.Location = new System.Drawing.Point(225, 64);
-            this.cmbxSelectToEdit.Name = "cmbxSelectToEdit";
-            this.cmbxSelectToEdit.Size = new System.Drawing.Size(121, 21);
-            this.cmbxSelectToEdit.TabIndex = 6;
-            // 
             // lbLocationAdd
             // 
             this.lbLocationAdd.AutoSize = true;
@@ -270,18 +257,15 @@
             this.lbLocationAdd.TabIndex = 7;
             this.lbLocationAdd.Text = "What location would you like to add to?";
             // 
-            // cmboBxSelectToAddLocation
+            // cmbxSelectToAddLocation
             // 
-            this.cmboBxSelectToAddLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmboBxSelectToAddLocation.FormattingEnabled = true;
-            this.cmboBxSelectToAddLocation.Items.AddRange(new object[] {
-            "Location",
-            "Year",
-            "Month"});
-            this.cmboBxSelectToAddLocation.Location = new System.Drawing.Point(225, 91);
-            this.cmboBxSelectToAddLocation.Name = "cmboBxSelectToAddLocation";
-            this.cmboBxSelectToAddLocation.Size = new System.Drawing.Size(121, 21);
-            this.cmboBxSelectToAddLocation.TabIndex = 8;
+            this.cmbxSelectToAddLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxSelectToAddLocation.FormattingEnabled = true;
+            this.cmbxSelectToAddLocation.Location = new System.Drawing.Point(225, 91);
+            this.cmbxSelectToAddLocation.Name = "cmbxSelectToAddLocation";
+            this.cmbxSelectToAddLocation.Size = new System.Drawing.Size(121, 21);
+            this.cmbxSelectToAddLocation.TabIndex = 8;
+            this.cmbxSelectToAddLocation.SelectedIndexChanged += new System.EventHandler(this.cmboBxSelectToAddLocation_SelectedIndexChanged);
             // 
             // lbYearAdd
             // 
@@ -292,18 +276,15 @@
             this.lbYearAdd.TabIndex = 9;
             this.lbYearAdd.Text = "What year would you like to add to?";
             // 
-            // cmboBxSelectToAddYear
+            // cmbxSelectToAddYear
             // 
-            this.cmboBxSelectToAddYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmboBxSelectToAddYear.FormattingEnabled = true;
-            this.cmboBxSelectToAddYear.Items.AddRange(new object[] {
-            "Location",
-            "Year",
-            "Month"});
-            this.cmboBxSelectToAddYear.Location = new System.Drawing.Point(225, 126);
-            this.cmboBxSelectToAddYear.Name = "cmboBxSelectToAddYear";
-            this.cmboBxSelectToAddYear.Size = new System.Drawing.Size(121, 21);
-            this.cmboBxSelectToAddYear.TabIndex = 10;
+            this.cmbxSelectToAddYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxSelectToAddYear.FormattingEnabled = true;
+            this.cmbxSelectToAddYear.Location = new System.Drawing.Point(225, 126);
+            this.cmbxSelectToAddYear.Name = "cmbxSelectToAddYear";
+            this.cmbxSelectToAddYear.Size = new System.Drawing.Size(121, 21);
+            this.cmbxSelectToAddYear.TabIndex = 10;
+            this.cmbxSelectToAddYear.SelectedIndexChanged += new System.EventHandler(this.cmboBxSelectToAddYear_SelectedIndexChanged);
             // 
             // gpBxYear
             // 
@@ -350,26 +331,90 @@
             this.txtBxYearID.Size = new System.Drawing.Size(117, 20);
             this.txtBxYearID.TabIndex = 3;
             // 
-            // gpbxMonth
+            // gpBxMonth
             // 
-            this.gpbxMonth.Controls.Add(this.textBox12);
-            this.gpbxMonth.Controls.Add(this.textBox11);
-            this.gpbxMonth.Controls.Add(this.textBox10);
-            this.gpbxMonth.Controls.Add(this.textBox9);
-            this.gpbxMonth.Controls.Add(this.label12);
-            this.gpbxMonth.Controls.Add(this.label11);
-            this.gpbxMonth.Controls.Add(this.label10);
-            this.gpbxMonth.Controls.Add(this.label9);
-            this.gpbxMonth.Controls.Add(this.cmbxMonthID);
-            this.gpbxMonth.Controls.Add(this.label8);
-            this.gpbxMonth.Controls.Add(this.lbMonthID);
-            this.gpbxMonth.Controls.Add(this.textBox8);
-            this.gpbxMonth.Location = new System.Drawing.Point(339, 167);
-            this.gpbxMonth.Name = "gpbxMonth";
-            this.gpbxMonth.Size = new System.Drawing.Size(218, 254);
-            this.gpbxMonth.TabIndex = 15;
-            this.gpbxMonth.TabStop = false;
-            this.gpbxMonth.Text = "Year";
+            this.gpBxMonth.Controls.Add(this.textBox12);
+            this.gpBxMonth.Controls.Add(this.textBox11);
+            this.gpBxMonth.Controls.Add(this.textBox10);
+            this.gpBxMonth.Controls.Add(this.textBox9);
+            this.gpBxMonth.Controls.Add(this.label12);
+            this.gpBxMonth.Controls.Add(this.label11);
+            this.gpBxMonth.Controls.Add(this.label10);
+            this.gpBxMonth.Controls.Add(this.label9);
+            this.gpBxMonth.Controls.Add(this.cmbxMonthID);
+            this.gpBxMonth.Controls.Add(this.label8);
+            this.gpBxMonth.Controls.Add(this.lbMonthID);
+            this.gpBxMonth.Controls.Add(this.textBox8);
+            this.gpBxMonth.Location = new System.Drawing.Point(339, 167);
+            this.gpBxMonth.Name = "gpBxMonth";
+            this.gpBxMonth.Size = new System.Drawing.Size(218, 254);
+            this.gpBxMonth.TabIndex = 15;
+            this.gpBxMonth.TabStop = false;
+            this.gpBxMonth.Text = "Month";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(95, 164);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(117, 20);
+            this.textBox12.TabIndex = 16;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(95, 136);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(117, 20);
+            this.textBox11.TabIndex = 15;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(118, 111);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(94, 20);
+            this.textBox10.TabIndex = 14;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(95, 87);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(117, 20);
+            this.textBox9.TabIndex = 13;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 167);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(72, 13);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Hours of Sun:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 139);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(90, 13);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Millimeters of rain:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 114);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(112, 13);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Number of Days Frost:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 90);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Min Temprature:";
             // 
             // cmbxMonthID
             // 
@@ -418,95 +463,45 @@
             this.textBox8.Size = new System.Drawing.Size(117, 20);
             this.textBox8.TabIndex = 4;
             // 
-            // label9
+            // cmbxSelectToEdit
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 90);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 13);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Min Temprature:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 114);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(112, 13);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Number of Days Frost:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 139);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 13);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "Millimeters of rain:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 167);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 13);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Hours of Sun:";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(95, 87);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(117, 20);
-            this.textBox9.TabIndex = 13;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(118, 111);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(94, 20);
-            this.textBox10.TabIndex = 14;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(95, 136);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(117, 20);
-            this.textBox11.TabIndex = 15;
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(95, 164);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(117, 20);
-            this.textBox12.TabIndex = 16;
+            this.cmbxSelectToEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxSelectToEdit.FormattingEnabled = true;
+            this.cmbxSelectToEdit.Items.AddRange(new object[] {
+            "Location",
+            "Year",
+            "Month"});
+            this.cmbxSelectToEdit.Location = new System.Drawing.Point(225, 64);
+            this.cmbxSelectToEdit.Name = "cmbxSelectToEdit";
+            this.cmbxSelectToEdit.Size = new System.Drawing.Size(121, 21);
+            this.cmbxSelectToEdit.TabIndex = 6;
+            this.cmbxSelectToEdit.SelectedIndexChanged += new System.EventHandler(this.cmbxSelectToEdit_SelectedIndexChanged);
             // 
             // AddData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.gpbxMonth);
+            this.Controls.Add(this.gpBxMonth);
             this.Controls.Add(this.gpBxYear);
-            this.Controls.Add(this.cmboBxSelectToAddYear);
+            this.Controls.Add(this.cmbxSelectToAddYear);
             this.Controls.Add(this.lbYearAdd);
-            this.Controls.Add(this.cmboBxSelectToAddLocation);
+            this.Controls.Add(this.cmbxSelectToAddLocation);
             this.Controls.Add(this.lbLocationAdd);
             this.Controls.Add(this.cmbxSelectToEdit);
             this.Controls.Add(this.lbAdd);
             this.Controls.Add(this.btnAddInput);
             this.Controls.Add(this.btnAddFile);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gpBxLocation);
             this.Controls.Add(this.btnMenu);
             this.Name = "AddData";
             this.Text = "AddData";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gpBxLocation.ResumeLayout(false);
+            this.gpBxLocation.PerformLayout();
             this.gpBxYear.ResumeLayout(false);
             this.gpBxYear.PerformLayout();
-            this.gpbxMonth.ResumeLayout(false);
-            this.gpbxMonth.PerformLayout();
+            this.gpBxMonth.ResumeLayout(false);
+            this.gpBxMonth.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -515,7 +510,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnMenu;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gpBxLocation;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox4;
@@ -533,17 +528,16 @@
         private System.Windows.Forms.Button btnAddFile;
         private System.Windows.Forms.Button btnAddInput;
         private System.Windows.Forms.Label lbAdd;
-        private System.Windows.Forms.ComboBox cmbxSelectToEdit;
         private System.Windows.Forms.Label lbLocationAdd;
-        private System.Windows.Forms.ComboBox cmboBxSelectToAddLocation;
+        private System.Windows.Forms.ComboBox cmbxSelectToAddLocation;
         private System.Windows.Forms.Label lbYearAdd;
-        private System.Windows.Forms.ComboBox cmboBxSelectToAddYear;
+        private System.Windows.Forms.ComboBox cmbxSelectToAddYear;
         private System.Windows.Forms.GroupBox gpBxYear;
         private System.Windows.Forms.Label lbDescription;
         private System.Windows.Forms.Label lbYearID;
         private System.Windows.Forms.TextBox txtBxDescription;
         private System.Windows.Forms.TextBox txtBxYearID;
-        private System.Windows.Forms.GroupBox gpbxMonth;
+        private System.Windows.Forms.GroupBox gpBxMonth;
         private System.Windows.Forms.ComboBox cmbxMonthID;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lbMonthID;
@@ -556,5 +550,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbxSelectToEdit;
     }
 }

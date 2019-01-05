@@ -40,8 +40,10 @@ namespace assessment
         {
             cmbxSelectLocation.Items.Clear();
 
+            //point
             for (int i = 0; i < Form1.frm1Ref.numOfLocations; i++)
             {
+                //point
                 if (Form1.frm1Ref.locations[i] != null)
                 {
                     cmbxSelectLocation.Items.Add(Form1.frm1Ref.locations[i].GetName());
@@ -311,7 +313,7 @@ namespace assessment
         {
             OptionsForm f = new OptionsForm();
             f.Show();
-            this.Close();
+            this.Dispose();
         }
 
         private void EditData_FormClosed(object sender, FormClosedEventArgs e)
@@ -330,6 +332,8 @@ namespace assessment
             }
 
             sw.Close();
+
+            Form1.frm1Ref.Close();
         }
     }
 }
