@@ -69,10 +69,12 @@ namespace assessment
         private void SetCmbxSelectMonth()
         {
             cmbxSelectMonth.Items.Clear();
-
-            foreach (var month in Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs())
+            if (cmbxSelectYear.SelectedIndex != -1)
             {
-                cmbxSelectMonth.Items.Add(month.GetIDNum());
+                foreach (var month in Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs())
+                {
+                    cmbxSelectMonth.Items.Add(month.GetIDNum());
+                }
             }
 
         }
@@ -279,7 +281,7 @@ namespace assessment
             if (errorFound)
             {
                 // ...say there is an error
-                MessageBox.Show("There is already a location with this name.");
+                MessageBox.Show("Error: There is already a location with this name.");
             }
             else
             {
@@ -311,6 +313,20 @@ namespace assessment
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
+            // string fileData = "";
+            StreamWriter sw = new StreamWriter("test.txt");
+
+            sw.WriteLine(Form1.frm1Ref.numOfLocations);
+
+            // fileData += Form1.frm1Ref.numOfLocations;
+
+            foreach (var location in Form1.frm1Ref.locations)
+            {
+                sw.WriteLine(location.GetName());
+            }
+
+            sw.Close();
+
             OptionsForm f = new OptionsForm();
             f.Show();
             this.Dispose();
@@ -329,6 +345,23 @@ namespace assessment
             foreach (var location in Form1.frm1Ref.locations)
             {
                 sw.WriteLine(location.GetName());
+                sw.WriteLine(location.GetStreetName());
+                sw.WriteLine(location.GetCountry());
+                sw.WriteLine(location.GetPostCode());
+                sw.WriteLine(location.GetLatitude());
+                sw.WriteLine(location.GetLongitude());
+                sw.WriteLine(location.GetYears());
+
+                foreach(var year in location.GetYears())
+                {
+                    sw.WriteLine(year.GetDescription());
+
+                    foreach(var month in year.GetMonthObs())
+                    {
+                        
+                    }
+                }
+                
             }
 
             sw.Close();

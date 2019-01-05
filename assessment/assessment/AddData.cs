@@ -220,5 +220,55 @@ namespace assessment
         {
 
         }
+
+        private void btnAddInput_Click(object sender, EventArgs e)
+        {
+            if (cmbxSelectToEdit.Text == "Location")
+            {
+                SaveNewLocation();
+            }
+            else if (cmbxSelectToEdit.Text == "Year")
+            {
+                SaveNewYear();
+            }
+            else if (cmbxSelectToEdit.Text == "Month")
+            {
+                SaveNewMonth();
+            }
+            else
+            {
+                MessageBox.Show("Error: Nothing selected.");
+            }
+
+            // string fileData = "";
+            StreamWriter sw = new StreamWriter("test.txt");
+
+            sw.WriteLine(Form1.frm1Ref.numOfLocations);
+
+            // fileData += Form1.frm1Ref.numOfLocations;
+
+            foreach (var location in Form1.frm1Ref.locations)
+            {
+                sw.WriteLine(location.GetName());
+            }
+
+            sw.Close();
+
+        }
+
+        private void SaveNewLocation()
+        {
+
+        }
+
+        private void SaveNewYear()
+        {
+
+        }
+
+        private void SaveNewMonth()
+        {
+
+        }
     }
 }

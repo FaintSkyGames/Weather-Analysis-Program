@@ -238,6 +238,7 @@
             this.btnAddInput.TabIndex = 4;
             this.btnAddInput.Text = "Add data from input";
             this.btnAddInput.UseVisualStyleBackColor = true;
+            this.btnAddInput.Click += new System.EventHandler(this.btnAddInput_Click);
             // 
             // lbAdd
             // 
