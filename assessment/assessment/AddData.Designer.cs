@@ -30,20 +30,18 @@
         {
             this.btnMenu = new System.Windows.Forms.Button();
             this.gpBxLocation = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtBxLongitude = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtBxLatitude = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBxPostcode = new System.Windows.Forms.TextBox();
+            this.txtBxCountry = new System.Windows.Forms.TextBox();
+            this.txtBxStreet = new System.Windows.Forms.TextBox();
+            this.txtBxLocationName = new System.Windows.Forms.TextBox();
             this.btnAddFile = new System.Windows.Forms.Button();
             this.btnAddInput = new System.Windows.Forms.Button();
             this.lbAdd = new System.Windows.Forms.Label();
@@ -87,35 +85,25 @@
             // 
             // gpBxLocation
             // 
-            this.gpBxLocation.Controls.Add(this.label7);
             this.gpBxLocation.Controls.Add(this.label6);
-            this.gpBxLocation.Controls.Add(this.textBox7);
-            this.gpBxLocation.Controls.Add(this.textBox6);
+            this.gpBxLocation.Controls.Add(this.gpBxYear);
+            this.gpBxLocation.Controls.Add(this.txtBxLongitude);
             this.gpBxLocation.Controls.Add(this.label5);
-            this.gpBxLocation.Controls.Add(this.textBox5);
+            this.gpBxLocation.Controls.Add(this.txtBxLatitude);
             this.gpBxLocation.Controls.Add(this.label4);
             this.gpBxLocation.Controls.Add(this.label3);
             this.gpBxLocation.Controls.Add(this.label2);
             this.gpBxLocation.Controls.Add(this.label1);
-            this.gpBxLocation.Controls.Add(this.textBox4);
-            this.gpBxLocation.Controls.Add(this.textBox3);
-            this.gpBxLocation.Controls.Add(this.textBox2);
-            this.gpBxLocation.Controls.Add(this.textBox1);
+            this.gpBxLocation.Controls.Add(this.txtBxPostcode);
+            this.gpBxLocation.Controls.Add(this.txtBxCountry);
+            this.gpBxLocation.Controls.Add(this.txtBxStreet);
+            this.gpBxLocation.Controls.Add(this.txtBxLocationName);
             this.gpBxLocation.Location = new System.Drawing.Point(24, 167);
             this.gpBxLocation.Name = "gpBxLocation";
             this.gpBxLocation.Size = new System.Drawing.Size(218, 254);
             this.gpBxLocation.TabIndex = 2;
             this.gpBxLocation.TabStop = false;
             this.gpBxLocation.Text = "Location";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 196);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Number Of Years:";
             // 
             // label6
             // 
@@ -126,19 +114,12 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Longitude:";
             // 
-            // textBox7
+            // txtBxLongitude
             // 
-            this.textBox7.Location = new System.Drawing.Point(95, 193);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(117, 20);
-            this.textBox7.TabIndex = 10;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(95, 167);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(117, 20);
-            this.textBox6.TabIndex = 12;
+            this.txtBxLongitude.Location = new System.Drawing.Point(95, 167);
+            this.txtBxLongitude.Name = "txtBxLongitude";
+            this.txtBxLongitude.Size = new System.Drawing.Size(117, 20);
+            this.txtBxLongitude.TabIndex = 12;
             // 
             // label5
             // 
@@ -149,12 +130,12 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Latitude:";
             // 
-            // textBox5
+            // txtBxLatitude
             // 
-            this.textBox5.Location = new System.Drawing.Point(95, 141);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(117, 20);
-            this.textBox5.TabIndex = 10;
+            this.txtBxLatitude.Location = new System.Drawing.Point(95, 141);
+            this.txtBxLatitude.Name = "txtBxLatitude";
+            this.txtBxLatitude.Size = new System.Drawing.Size(117, 20);
+            this.txtBxLatitude.TabIndex = 10;
             // 
             // label4
             // 
@@ -192,33 +173,33 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Name:";
             // 
-            // textBox4
+            // txtBxPostcode
             // 
-            this.textBox4.Location = new System.Drawing.Point(95, 115);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(117, 20);
-            this.textBox4.TabIndex = 6;
+            this.txtBxPostcode.Location = new System.Drawing.Point(95, 115);
+            this.txtBxPostcode.Name = "txtBxPostcode";
+            this.txtBxPostcode.Size = new System.Drawing.Size(117, 20);
+            this.txtBxPostcode.TabIndex = 6;
             // 
-            // textBox3
+            // txtBxCountry
             // 
-            this.textBox3.Location = new System.Drawing.Point(95, 89);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(117, 20);
-            this.textBox3.TabIndex = 5;
+            this.txtBxCountry.Location = new System.Drawing.Point(95, 89);
+            this.txtBxCountry.Name = "txtBxCountry";
+            this.txtBxCountry.Size = new System.Drawing.Size(117, 20);
+            this.txtBxCountry.TabIndex = 5;
             // 
-            // textBox2
+            // txtBxStreet
             // 
-            this.textBox2.Location = new System.Drawing.Point(95, 63);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(117, 20);
-            this.textBox2.TabIndex = 4;
+            this.txtBxStreet.Location = new System.Drawing.Point(95, 63);
+            this.txtBxStreet.Name = "txtBxStreet";
+            this.txtBxStreet.Size = new System.Drawing.Size(117, 20);
+            this.txtBxStreet.TabIndex = 4;
             // 
-            // textBox1
+            // txtBxLocationName
             // 
-            this.textBox1.Location = new System.Drawing.Point(95, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(117, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtBxLocationName.Location = new System.Drawing.Point(95, 37);
+            this.txtBxLocationName.Name = "txtBxLocationName";
+            this.txtBxLocationName.Size = new System.Drawing.Size(117, 20);
+            this.txtBxLocationName.TabIndex = 3;
             // 
             // btnAddFile
             // 
@@ -293,7 +274,7 @@
             this.gpBxYear.Controls.Add(this.lbYearID);
             this.gpBxYear.Controls.Add(this.txtBxDescription);
             this.gpBxYear.Controls.Add(this.txtBxYearID);
-            this.gpBxYear.Location = new System.Drawing.Point(103, 153);
+            this.gpBxYear.Location = new System.Drawing.Point(60, 0);
             this.gpBxYear.Name = "gpBxYear";
             this.gpBxYear.Size = new System.Drawing.Size(218, 254);
             this.gpBxYear.TabIndex = 14;
@@ -484,7 +465,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.gpBxMonth);
-            this.Controls.Add(this.gpBxYear);
             this.Controls.Add(this.cmbxSelectToAddYear);
             this.Controls.Add(this.lbYearAdd);
             this.Controls.Add(this.cmbxSelectToAddLocation);
@@ -514,16 +494,14 @@
         private System.Windows.Forms.GroupBox gpBxLocation;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtBxPostcode;
+        private System.Windows.Forms.TextBox txtBxCountry;
+        private System.Windows.Forms.TextBox txtBxStreet;
+        private System.Windows.Forms.TextBox txtBxLocationName;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtBxLongitude;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtBxLatitude;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnAddFile;

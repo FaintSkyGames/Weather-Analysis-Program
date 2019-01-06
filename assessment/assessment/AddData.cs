@@ -179,7 +179,7 @@ namespace assessment
         private void cmboBxSelectToAddLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
             curLocation = cmbxSelectToAddLocation.SelectedIndex;
-            SetcmbxSelectToAddYear();
+            SetCmbxSelectToAddYear();
         }
 
         // Set combobox items with locations
@@ -198,7 +198,7 @@ namespace assessment
         }
 
         // Set combobox items with years
-        private void SetcmbxSelectToAddYear()
+        private void SetCmbxSelectToAddYear()
         {
             cmbxSelectToAddYear.Items.Clear();
 
@@ -226,10 +226,12 @@ namespace assessment
             if (cmbxSelectToEdit.Text == "Location")
             {
                 SaveNewLocation();
+                SetCmbxSelectToAddLocation();
             }
             else if (cmbxSelectToEdit.Text == "Year")
             {
                 SaveNewYear();
+                SetCmbxSelectToAddYear();
             }
             else if (cmbxSelectToEdit.Text == "Month")
             {
@@ -243,6 +245,9 @@ namespace assessment
             // string fileData = "";
             StreamWriter sw = new StreamWriter("test.txt");
 
+            // string fileData = "";
+            StreamWriter sw = new StreamWriter("test.txt");
+
             sw.WriteLine(Form1.frm1Ref.numOfLocations);
 
             // fileData += Form1.frm1Ref.numOfLocations;
@@ -250,6 +255,30 @@ namespace assessment
             foreach (var location in Form1.frm1Ref.locations)
             {
                 sw.WriteLine(location.GetName());
+                sw.WriteLine(location.GetStreetName());
+                sw.WriteLine(location.GetCountry());
+                sw.WriteLine(location.GetPostCode());
+                sw.WriteLine(location.GetLatitude());
+                sw.WriteLine(location.GetLongitude());
+                sw.WriteLine(location.GetNumOfYears());
+
+                foreach (var year in location.GetYears())
+                {
+                    sw.WriteLine(year.GetDescription());
+
+                    foreach (var month in year.GetMonthObs())
+                    {
+                        sw.WriteLine(year.GetYearID());
+
+                        sw.WriteLine(month.GetIDNum());
+                        sw.WriteLine(month.GetMaxTemp());
+                        sw.WriteLine(month.GetMinTemp());
+                        sw.WriteLine(month.GetNumDaysFrost());
+                        sw.WriteLine(month.GetMilRain());
+                        sw.WriteLine(month.GetHoursSun());
+                    }
+                }
+
             }
 
             sw.Close();
@@ -258,11 +287,44 @@ namespace assessment
 
         private void SaveNewLocation()
         {
+            Form1.frm1Ref.numOfLocations += 1;
+            Array.Resize(ref Form1.frm1Ref.locations, (Form1.frm1Ref.numOfLocations));
+
+            Form1.frm1Ref.locations[Form1.frm1Ref.numOfLocations] = new Location(
+                txtBxLocationName.Text,
+                txtBxStreet.Text,
+                txtBxCountry.Text,
+                txtBxPostcode.Text,
+                txtBxLatitude.Text,
+                txtBxLongitude.Text,
+                0);
 
         }
 
         private void SaveNewYear()
         {
+            int curYearCheck = -1;
+            Boolean duplicateFound = false;
+
+            do
+            {
+                curYearCheck += 1;
+                if (Form1.frm1Ref.locations[curLocation].GetYears()[curYearCheck].GetYearID() == Convert.ToInt64(txtBxYearID.Text))
+                {
+                    duplicateFound = true;
+                }
+
+            } while (true);
+
+            if (duplicateFound)
+            {
+
+            }
+            else
+            {
+                Form1.frm1Ref.locations[curLocation].SetNumOfYears(Form1.frm1Ref.locations[curLocation].GetNumOfYears() + 1);
+            }
+                      
 
         }
 

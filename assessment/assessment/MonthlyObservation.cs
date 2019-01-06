@@ -17,7 +17,7 @@ namespace assessment
         double hoursSun;
 
         // Constructor
-        public MonthlyObservation(int idIn, double minTempIn, double maxTempIn, int numDaysFrostIn, double milRainIn, double hoursSunIn)
+        public MonthlyObservation(int idIn, double maxTempIn, double minTempIn, int numDaysFrostIn, double milRainIn, double hoursSunIn)
         {
             idNum = idIn;
             minTemp = minTempIn;

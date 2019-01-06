@@ -350,7 +350,7 @@ namespace assessment
                 sw.WriteLine(location.GetPostCode());
                 sw.WriteLine(location.GetLatitude());
                 sw.WriteLine(location.GetLongitude());
-                sw.WriteLine(location.GetYears());
+                sw.WriteLine(location.GetNumOfYears());
 
                 foreach(var year in location.GetYears())
                 {
@@ -358,7 +358,14 @@ namespace assessment
 
                     foreach(var month in year.GetMonthObs())
                     {
+                        sw.WriteLine(year.GetYearID());
                         
+                        sw.WriteLine(month.GetIDNum());
+                        sw.WriteLine(month.GetMaxTemp());
+                        sw.WriteLine(month.GetMinTemp());
+                        sw.WriteLine(month.GetNumDaysFrost());
+                        sw.WriteLine(month.GetMilRain());
+                        sw.WriteLine(month.GetHoursSun());    
                     }
                 }
                 
