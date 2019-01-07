@@ -13,8 +13,8 @@ namespace assessment
 {
     public partial class AddData : Form
     {
-        private int curLocation;
-        private int curYear;
+        private int curLocation = -1;
+        private int curYear = -1;
 
         public AddData()
         {
@@ -128,7 +128,7 @@ namespace assessment
             gpBxMonth.Visible = false;
 
             // If adding a location...
-            if (cmbxSelectToEdit.Text == "Location")
+            if (cmbxSelectToAdd.Text == "Location")
             {
                 // ...show the location group
                 gpBxLocation.Visible = true;
@@ -143,7 +143,7 @@ namespace assessment
 
             }
             // If adding a year...
-            if (cmbxSelectToEdit.Text == "Year")
+            if (cmbxSelectToAdd.Text == "Year")
             {
                 // ...show the year group
                 gpBxYear.Visible = true;
@@ -158,7 +158,7 @@ namespace assessment
 
 
             }
-            if (cmbxSelectToEdit.Text == "Month")
+            if (cmbxSelectToAdd.Text == "Month")
             {
                 // ...show the month group
                 gpBxMonth.Visible = true;
@@ -223,19 +223,71 @@ namespace assessment
 
         private void btnAddInput_Click(object sender, EventArgs e)
         {
-            if (cmbxSelectToEdit.Text == "Location")
+            if (cmbxSelectToAdd.Text == "Location")
             {
+                if (ErrorCheckLocation())
+                {
                 SaveNewLocation();
                 SetCmbxSelectToAddLocation();
+
+                txtBxLocationName.Text = "";
+                txtBxStreet.Text = "";
+                txtBxCountry.Text = "";
+                txtBxPostcode.Text = "";
+                txtBxLatitude.Text = "";
+                txtBxLongitude.Text = ""; 
+                }
+                             
             }
-            else if (cmbxSelectToEdit.Text == "Year")
+            else if (cmbxSelectToAdd.Text == "Year")
             {
-                SaveNewYear();
-                SetCmbxSelectToAddYear();
+                if (ErrorCheckYear())
+                {
+                    if (cmbxSelectToAddLocation.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Please ensure the Location is selected.");
+                    }
+                    else
+                    {
+                        SaveNewYear();
+                        SetCmbxSelectToAddYear();
+
+                        txtBxYearID.Text = "";
+                        txtBxDescription.Text = "";
+                    }
+                }
+                
             }
-            else if (cmbxSelectToEdit.Text == "Month")
+            else if (cmbxSelectToAdd.Text == "Month")
             {
-                SaveNewMonth();
+                if (ErrorCheckMonth())
+                {
+                    if (cmbxSelectToAddLocation.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Please ensure the Location is selected.");
+                    }
+                    else
+                    {
+                        if (cmbxSelectToAddYear.SelectedIndex == -1)
+                        {
+                            MessageBox.Show("Please ensure the Year is selected.");
+                        }
+                        else
+                        {
+                            SaveNewMonth();
+
+                            cmbxMonthID.SelectedIndex = -1;
+                            txtBxMaxTemp.Text = "";
+                            txtBxMinTemp.Text = "";
+                            txtBxNumDaysFrost.Text = "";
+                            txtBxMilRain.Text = "";
+                            txtBxHoursSun.Text = "";
+                            
+                        }
+                    }
+
+                }
+                
             }
             else
             {
@@ -266,7 +318,7 @@ namespace assessment
                     foreach (var month in year.GetMonthObs())
                     {
                         sw.WriteLine(year.GetYearID());
-
+                        
                         sw.WriteLine(month.GetIDNum());
                         sw.WriteLine(month.GetMaxTemp());
                         sw.WriteLine(month.GetMinTemp());
@@ -290,12 +342,12 @@ namespace assessment
             do
             {
                 curLocationCheck += 1;
-                if (Form1.frm1Ref.locations[curLocation].GetName() == txtBxLocationName.Text)
+                if (Form1.frm1Ref.locations[curLocationCheck].GetName() == txtBxLocationName.Text)
                 {
                     duplicateFound = true;
                 }
 
-            } while (curLocationCheck != Form1.frm1Ref.numOfLocations);
+            } while (curLocationCheck != Form1.frm1Ref.numOfLocations - 1);
 
              if (duplicateFound)
             {
@@ -324,15 +376,18 @@ namespace assessment
             int curYearCheck = -1;
             Boolean duplicateFound = false;
 
-            do
+            if (Form1.frm1Ref.locations[curLocation].GetNumOfYears() != 0)
             {
-                curYearCheck += 1;
-                if (Form1.frm1Ref.locations[curLocation].GetYears()[curYearCheck].GetYearID() == Convert.ToInt64(txtBxYearID.Text))
+                do
                 {
-                    duplicateFound = true;
-                }
+                    curYearCheck += 1;
+                    if (Form1.frm1Ref.locations[curLocation].GetYears()[curYearCheck].GetYearID() == Convert.ToInt64(txtBxYearID.Text))
+                    {
+                        duplicateFound = true;
+                    }
 
-            } while (curYearCheck != Form1.frm1Ref.locations[curLocation].GetNumOfYears());
+                } while (curYearCheck != Form1.frm1Ref.locations[curLocation].GetNumOfYears() - 1);
+            }
 
             if (duplicateFound)
             { 
@@ -348,6 +403,21 @@ namespace assessment
                        );
 
                 Form1.frm1Ref.locations[curLocation].SetYears(thisYear, Form1.frm1Ref.locations[curLocation].GetNumOfYears() - 1);
+
+                MonthlyObservation tempMonth = new MonthlyObservation(
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                    );
+
+                for (int i = 0; i < 12; i++)
+                {
+                    Form1.frm1Ref.locations[curLocation].GetYears()[Form1.frm1Ref.locations[curLocation].GetNumOfYears() - 1].SetMonthObs(tempMonth, i);
+
+                }
             }
         }
 
@@ -359,10 +429,14 @@ namespace assessment
             do
             {
                 curMonthCheck += 1;
-                if (Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonthCheck].GetIDNum() == Convert.ToInt64(cmbxMonthID.Text))
+                if (Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonthCheck] != null)
                 {
-                    duplicateFound = true;
+                    if (Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonthCheck].GetIDNum() == Convert.ToInt64(cmbxMonthID.Text))
+                    {
+                        duplicateFound = true;
+                    }
                 }
+                
 
             } while (curMonthCheck != 11);
 
@@ -383,6 +457,88 @@ namespace assessment
 
                 Form1.frm1Ref.locations[curLocation].GetYears()[curYear].SetMonthObs(thisMonth, Convert.ToInt32(cmbxMonthID.Text) - 1);
             }
+
+        }
+
+        private bool ErrorCheckLocation()
+        {
+            Boolean errorsFound = false;
+
+            if (txtBxLocationName.Text == "")
+                errorsFound = true;
+            if (txtBxStreet.Text == "")
+                errorsFound = true;
+            if (txtBxCountry.Text == "")
+                errorsFound = true;
+            if (txtBxPostcode.Text == "")
+                errorsFound = true;
+            if (txtBxLatitude.Text == "")
+                errorsFound = true;
+            if (txtBxLongitude.Text == "")
+                errorsFound = true;
+
+            if (errorsFound)
+            {
+                MessageBox.Show("Please make sure everything has been entered");
+                return false;
+            }
+            
+            return true;
+        }
+
+        private bool ErrorCheckYear()
+        {
+            Boolean errorsFound = false;
+
+            if (txtBxYearID.Text == "")
+                errorsFound = true;
+            if (txtBxDescription.Text == "")
+                errorsFound = true;
+
+            if (errorsFound)
+            {
+                MessageBox.Show("Please make sure everything has been entered");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ErrorCheckMonth()
+        {
+            Boolean errorsFound = false;
+
+
+            if (cmbxMonthID.SelectedIndex == -1)
+                errorsFound = true;
+            if (txtBxMaxTemp.Text == "")
+                errorsFound = true;
+            if (txtBxMinTemp.Text == "")
+                errorsFound = true;
+            if (txtBxNumDaysFrost.Text == "")
+                errorsFound = true;
+            if (txtBxMilRain.Text == "")
+                errorsFound = true;
+            if (txtBxHoursSun.Text == "")
+                errorsFound = true;
+
+            if (errorsFound)
+            {
+                MessageBox.Show("Please make sure everything has been entered");
+                return false;
+            }
+
+            return true;
+        }
+
+
+        private void gpBxYear_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gpBxMonth_Enter(object sender, EventArgs e)
+        {
 
         }
     }

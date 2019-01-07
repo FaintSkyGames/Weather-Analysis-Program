@@ -67,7 +67,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lbMonthID = new System.Windows.Forms.Label();
             this.txtBxMaxTemp = new System.Windows.Forms.TextBox();
-            this.cmbxSelectToEdit = new System.Windows.Forms.ComboBox();
+            this.cmbxSelectToAdd = new System.Windows.Forms.ComboBox();
             this.gpBxLocation.SuspendLayout();
             this.gpBxYear.SuspendLayout();
             this.gpBxMonth.SuspendLayout();
@@ -86,7 +86,6 @@
             // gpBxLocation
             // 
             this.gpBxLocation.Controls.Add(this.label6);
-            this.gpBxLocation.Controls.Add(this.gpBxYear);
             this.gpBxLocation.Controls.Add(this.txtBxLongitude);
             this.gpBxLocation.Controls.Add(this.label5);
             this.gpBxLocation.Controls.Add(this.txtBxLatitude);
@@ -120,12 +119,13 @@
             this.gpBxYear.Controls.Add(this.lbYearID);
             this.gpBxYear.Controls.Add(this.txtBxDescription);
             this.gpBxYear.Controls.Add(this.txtBxYearID);
-            this.gpBxYear.Location = new System.Drawing.Point(60, 0);
+            this.gpBxYear.Location = new System.Drawing.Point(24, 167);
             this.gpBxYear.Name = "gpBxYear";
             this.gpBxYear.Size = new System.Drawing.Size(218, 254);
             this.gpBxYear.TabIndex = 14;
             this.gpBxYear.TabStop = false;
             this.gpBxYear.Text = "Year";
+            this.gpBxYear.Enter += new System.EventHandler(this.gpBxYear_Enter);
             // 
             // lbDescription
             // 
@@ -327,12 +327,13 @@
             this.gpBxMonth.Controls.Add(this.label8);
             this.gpBxMonth.Controls.Add(this.lbMonthID);
             this.gpBxMonth.Controls.Add(this.txtBxMaxTemp);
-            this.gpBxMonth.Location = new System.Drawing.Point(339, 167);
+            this.gpBxMonth.Location = new System.Drawing.Point(323, 184);
             this.gpBxMonth.Name = "gpBxMonth";
             this.gpBxMonth.Size = new System.Drawing.Size(218, 254);
             this.gpBxMonth.TabIndex = 15;
             this.gpBxMonth.TabStop = false;
             this.gpBxMonth.Text = "Month";
+            this.gpBxMonth.Enter += new System.EventHandler(this.gpBxMonth_Enter);
             // 
             // txtBxHoursSun
             // 
@@ -445,19 +446,19 @@
             this.txtBxMaxTemp.Size = new System.Drawing.Size(117, 20);
             this.txtBxMaxTemp.TabIndex = 4;
             // 
-            // cmbxSelectToEdit
+            // cmbxSelectToAdd
             // 
-            this.cmbxSelectToEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbxSelectToEdit.FormattingEnabled = true;
-            this.cmbxSelectToEdit.Items.AddRange(new object[] {
+            this.cmbxSelectToAdd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxSelectToAdd.FormattingEnabled = true;
+            this.cmbxSelectToAdd.Items.AddRange(new object[] {
             "Location",
             "Year",
             "Month"});
-            this.cmbxSelectToEdit.Location = new System.Drawing.Point(225, 64);
-            this.cmbxSelectToEdit.Name = "cmbxSelectToEdit";
-            this.cmbxSelectToEdit.Size = new System.Drawing.Size(121, 21);
-            this.cmbxSelectToEdit.TabIndex = 6;
-            this.cmbxSelectToEdit.SelectedIndexChanged += new System.EventHandler(this.cmbxSelectToEdit_SelectedIndexChanged);
+            this.cmbxSelectToAdd.Location = new System.Drawing.Point(225, 64);
+            this.cmbxSelectToAdd.Name = "cmbxSelectToAdd";
+            this.cmbxSelectToAdd.Size = new System.Drawing.Size(121, 21);
+            this.cmbxSelectToAdd.TabIndex = 6;
+            this.cmbxSelectToAdd.SelectedIndexChanged += new System.EventHandler(this.cmbxSelectToEdit_SelectedIndexChanged);
             // 
             // AddData
             // 
@@ -466,10 +467,11 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.gpBxMonth);
             this.Controls.Add(this.cmbxSelectToAddYear);
+            this.Controls.Add(this.gpBxYear);
             this.Controls.Add(this.lbYearAdd);
             this.Controls.Add(this.cmbxSelectToAddLocation);
             this.Controls.Add(this.lbLocationAdd);
-            this.Controls.Add(this.cmbxSelectToEdit);
+            this.Controls.Add(this.cmbxSelectToAdd);
             this.Controls.Add(this.lbAdd);
             this.Controls.Add(this.btnAddInput);
             this.Controls.Add(this.btnAddFile);
@@ -529,6 +531,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cmbxSelectToEdit;
+        private System.Windows.Forms.ComboBox cmbxSelectToAdd;
     }
 }

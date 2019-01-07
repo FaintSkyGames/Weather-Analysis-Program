@@ -72,6 +72,16 @@ namespace assessment
                 cmbxMonths.Items.Add(month.GetIDNum());
             }
 
+            /*
+            for (int i = 0; i < 12; i++)
+            {
+                if (cmbxMonths.TabIndex. = "0")
+                {
+
+                }
+            }
+            */
+
         }
 
         private void cmbxLocations_SelectedIndexChanged(object sender, EventArgs e)
