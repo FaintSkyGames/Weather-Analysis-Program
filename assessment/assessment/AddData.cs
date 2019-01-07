@@ -245,9 +245,6 @@ namespace assessment
             // string fileData = "";
             StreamWriter sw = new StreamWriter("test.txt");
 
-            // string fileData = "";
-            StreamWriter sw = new StreamWriter("test.txt");
-
             sw.WriteLine(Form1.frm1Ref.numOfLocations);
 
             // fileData += Form1.frm1Ref.numOfLocations;
@@ -287,17 +284,38 @@ namespace assessment
 
         private void SaveNewLocation()
         {
-            Form1.frm1Ref.numOfLocations += 1;
-            Array.Resize(ref Form1.frm1Ref.locations, (Form1.frm1Ref.numOfLocations));
+            int curLocationCheck = -1;
+            Boolean duplicateFound = false;
 
-            Form1.frm1Ref.locations[Form1.frm1Ref.numOfLocations] = new Location(
-                txtBxLocationName.Text,
-                txtBxStreet.Text,
-                txtBxCountry.Text,
-                txtBxPostcode.Text,
-                txtBxLatitude.Text,
-                txtBxLongitude.Text,
-                0);
+            do
+            {
+                curLocationCheck += 1;
+                if (Form1.frm1Ref.locations[curLocation].GetName() == txtBxLocationName.Text)
+                {
+                    duplicateFound = true;
+                }
+
+            } while (curLocationCheck != Form1.frm1Ref.numOfLocations);
+
+             if (duplicateFound)
+            {
+                MessageBox.Show("There is already a location with this name.");
+            }
+            else
+            {
+                Form1.frm1Ref.numOfLocations += 1;
+                Array.Resize(ref Form1.frm1Ref.locations, (Form1.frm1Ref.numOfLocations));
+
+                Form1.frm1Ref.locations[Form1.frm1Ref.numOfLocations - 1] = new Location(
+                    txtBxLocationName.Text,
+                    txtBxStreet.Text,
+                    txtBxCountry.Text,
+                    txtBxPostcode.Text,
+                    txtBxLatitude.Text,
+                    txtBxLongitude.Text,
+                    0);
+
+            }
 
         }
 
@@ -314,22 +332,57 @@ namespace assessment
                     duplicateFound = true;
                 }
 
-            } while (true);
+            } while (curYearCheck != Form1.frm1Ref.locations[curLocation].GetNumOfYears());
 
             if (duplicateFound)
-            {
-
+            { 
+                MessageBox.Show("There is already a year with this ID.");
             }
             else
             {
                 Form1.frm1Ref.locations[curLocation].SetNumOfYears(Form1.frm1Ref.locations[curLocation].GetNumOfYears() + 1);
-            }
-                      
 
+                Year thisYear = new Year(
+                       txtBxDescription.Text,
+                       Convert.ToInt32(txtBxYearID.Text)
+                       );
+
+                Form1.frm1Ref.locations[curLocation].SetYears(thisYear, Form1.frm1Ref.locations[curLocation].GetNumOfYears() - 1);
+            }
         }
 
         private void SaveNewMonth()
         {
+            int curMonthCheck = -1;
+            Boolean duplicateFound = false;
+
+            do
+            {
+                curMonthCheck += 1;
+                if (Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonthCheck].GetIDNum() == Convert.ToInt64(cmbxMonthID.Text))
+                {
+                    duplicateFound = true;
+                }
+
+            } while (curMonthCheck != 11);
+
+            if (duplicateFound)
+            {
+                MessageBox.Show("There is already a month with this ID.");
+            }
+            else
+            {
+                MonthlyObservation thisMonth = new MonthlyObservation(
+                    Convert.ToInt32(cmbxMonthID.Text),
+                    Convert.ToDouble(txtBxMaxTemp.Text),
+                    Convert.ToDouble(txtBxMinTemp.Text),
+                    Convert.ToInt32(txtBxNumDaysFrost.Text),
+                    Convert.ToDouble(txtBxMilRain.Text),
+                    Convert.ToDouble(txtBxHoursSun.Text)
+                    );
+
+                Form1.frm1Ref.locations[curLocation].GetYears()[curYear].SetMonthObs(thisMonth, Convert.ToInt32(cmbxMonthID.Text) - 1);
+            }
 
         }
     }

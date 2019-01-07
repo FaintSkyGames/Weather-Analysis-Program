@@ -31,6 +31,11 @@
             this.btnMenu = new System.Windows.Forms.Button();
             this.gpBxLocation = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.gpBxYear = new System.Windows.Forms.GroupBox();
+            this.lbDescription = new System.Windows.Forms.Label();
+            this.lbYearID = new System.Windows.Forms.Label();
+            this.txtBxDescription = new System.Windows.Forms.TextBox();
+            this.txtBxYearID = new System.Windows.Forms.TextBox();
             this.txtBxLongitude = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtBxLatitude = new System.Windows.Forms.TextBox();
@@ -49,16 +54,11 @@
             this.cmbxSelectToAddLocation = new System.Windows.Forms.ComboBox();
             this.lbYearAdd = new System.Windows.Forms.Label();
             this.cmbxSelectToAddYear = new System.Windows.Forms.ComboBox();
-            this.gpBxYear = new System.Windows.Forms.GroupBox();
-            this.lbDescription = new System.Windows.Forms.Label();
-            this.lbYearID = new System.Windows.Forms.Label();
-            this.txtBxDescription = new System.Windows.Forms.TextBox();
-            this.txtBxYearID = new System.Windows.Forms.TextBox();
             this.gpBxMonth = new System.Windows.Forms.GroupBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtBxHoursSun = new System.Windows.Forms.TextBox();
+            this.txtBxMilRain = new System.Windows.Forms.TextBox();
+            this.txtBxNumDaysFrost = new System.Windows.Forms.TextBox();
+            this.txtBxMinTemp = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -66,7 +66,7 @@
             this.cmbxMonthID = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lbMonthID = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtBxMaxTemp = new System.Windows.Forms.TextBox();
             this.cmbxSelectToEdit = new System.Windows.Forms.ComboBox();
             this.gpBxLocation.SuspendLayout();
             this.gpBxYear.SuspendLayout();
@@ -113,6 +113,51 @@
             this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 13;
             this.label6.Text = "Longitude:";
+            // 
+            // gpBxYear
+            // 
+            this.gpBxYear.Controls.Add(this.lbDescription);
+            this.gpBxYear.Controls.Add(this.lbYearID);
+            this.gpBxYear.Controls.Add(this.txtBxDescription);
+            this.gpBxYear.Controls.Add(this.txtBxYearID);
+            this.gpBxYear.Location = new System.Drawing.Point(60, 0);
+            this.gpBxYear.Name = "gpBxYear";
+            this.gpBxYear.Size = new System.Drawing.Size(218, 254);
+            this.gpBxYear.TabIndex = 14;
+            this.gpBxYear.TabStop = false;
+            this.gpBxYear.Text = "Year";
+            // 
+            // lbDescription
+            // 
+            this.lbDescription.AutoSize = true;
+            this.lbDescription.Location = new System.Drawing.Point(6, 66);
+            this.lbDescription.Name = "lbDescription";
+            this.lbDescription.Size = new System.Drawing.Size(63, 13);
+            this.lbDescription.TabIndex = 7;
+            this.lbDescription.Text = "Description:";
+            // 
+            // lbYearID
+            // 
+            this.lbYearID.AutoSize = true;
+            this.lbYearID.Location = new System.Drawing.Point(6, 40);
+            this.lbYearID.Name = "lbYearID";
+            this.lbYearID.Size = new System.Drawing.Size(46, 13);
+            this.lbYearID.TabIndex = 3;
+            this.lbYearID.Text = "Year ID:";
+            // 
+            // txtBxDescription
+            // 
+            this.txtBxDescription.Location = new System.Drawing.Point(95, 63);
+            this.txtBxDescription.Name = "txtBxDescription";
+            this.txtBxDescription.Size = new System.Drawing.Size(117, 20);
+            this.txtBxDescription.TabIndex = 4;
+            // 
+            // txtBxYearID
+            // 
+            this.txtBxYearID.Location = new System.Drawing.Point(95, 37);
+            this.txtBxYearID.Name = "txtBxYearID";
+            this.txtBxYearID.Size = new System.Drawing.Size(117, 20);
+            this.txtBxYearID.TabIndex = 3;
             // 
             // txtBxLongitude
             // 
@@ -268,57 +313,12 @@
             this.cmbxSelectToAddYear.TabIndex = 10;
             this.cmbxSelectToAddYear.SelectedIndexChanged += new System.EventHandler(this.cmboBxSelectToAddYear_SelectedIndexChanged);
             // 
-            // gpBxYear
-            // 
-            this.gpBxYear.Controls.Add(this.lbDescription);
-            this.gpBxYear.Controls.Add(this.lbYearID);
-            this.gpBxYear.Controls.Add(this.txtBxDescription);
-            this.gpBxYear.Controls.Add(this.txtBxYearID);
-            this.gpBxYear.Location = new System.Drawing.Point(60, 0);
-            this.gpBxYear.Name = "gpBxYear";
-            this.gpBxYear.Size = new System.Drawing.Size(218, 254);
-            this.gpBxYear.TabIndex = 14;
-            this.gpBxYear.TabStop = false;
-            this.gpBxYear.Text = "Year";
-            // 
-            // lbDescription
-            // 
-            this.lbDescription.AutoSize = true;
-            this.lbDescription.Location = new System.Drawing.Point(6, 66);
-            this.lbDescription.Name = "lbDescription";
-            this.lbDescription.Size = new System.Drawing.Size(63, 13);
-            this.lbDescription.TabIndex = 7;
-            this.lbDescription.Text = "Description:";
-            // 
-            // lbYearID
-            // 
-            this.lbYearID.AutoSize = true;
-            this.lbYearID.Location = new System.Drawing.Point(6, 40);
-            this.lbYearID.Name = "lbYearID";
-            this.lbYearID.Size = new System.Drawing.Size(46, 13);
-            this.lbYearID.TabIndex = 3;
-            this.lbYearID.Text = "Year ID:";
-            // 
-            // txtBxDescription
-            // 
-            this.txtBxDescription.Location = new System.Drawing.Point(95, 63);
-            this.txtBxDescription.Name = "txtBxDescription";
-            this.txtBxDescription.Size = new System.Drawing.Size(117, 20);
-            this.txtBxDescription.TabIndex = 4;
-            // 
-            // txtBxYearID
-            // 
-            this.txtBxYearID.Location = new System.Drawing.Point(95, 37);
-            this.txtBxYearID.Name = "txtBxYearID";
-            this.txtBxYearID.Size = new System.Drawing.Size(117, 20);
-            this.txtBxYearID.TabIndex = 3;
-            // 
             // gpBxMonth
             // 
-            this.gpBxMonth.Controls.Add(this.textBox12);
-            this.gpBxMonth.Controls.Add(this.textBox11);
-            this.gpBxMonth.Controls.Add(this.textBox10);
-            this.gpBxMonth.Controls.Add(this.textBox9);
+            this.gpBxMonth.Controls.Add(this.txtBxHoursSun);
+            this.gpBxMonth.Controls.Add(this.txtBxMilRain);
+            this.gpBxMonth.Controls.Add(this.txtBxNumDaysFrost);
+            this.gpBxMonth.Controls.Add(this.txtBxMinTemp);
             this.gpBxMonth.Controls.Add(this.label12);
             this.gpBxMonth.Controls.Add(this.label11);
             this.gpBxMonth.Controls.Add(this.label10);
@@ -326,7 +326,7 @@
             this.gpBxMonth.Controls.Add(this.cmbxMonthID);
             this.gpBxMonth.Controls.Add(this.label8);
             this.gpBxMonth.Controls.Add(this.lbMonthID);
-            this.gpBxMonth.Controls.Add(this.textBox8);
+            this.gpBxMonth.Controls.Add(this.txtBxMaxTemp);
             this.gpBxMonth.Location = new System.Drawing.Point(339, 167);
             this.gpBxMonth.Name = "gpBxMonth";
             this.gpBxMonth.Size = new System.Drawing.Size(218, 254);
@@ -334,33 +334,33 @@
             this.gpBxMonth.TabStop = false;
             this.gpBxMonth.Text = "Month";
             // 
-            // textBox12
+            // txtBxHoursSun
             // 
-            this.textBox12.Location = new System.Drawing.Point(95, 164);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(117, 20);
-            this.textBox12.TabIndex = 16;
+            this.txtBxHoursSun.Location = new System.Drawing.Point(95, 164);
+            this.txtBxHoursSun.Name = "txtBxHoursSun";
+            this.txtBxHoursSun.Size = new System.Drawing.Size(117, 20);
+            this.txtBxHoursSun.TabIndex = 16;
             // 
-            // textBox11
+            // txtBxMilRain
             // 
-            this.textBox11.Location = new System.Drawing.Point(95, 136);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(117, 20);
-            this.textBox11.TabIndex = 15;
+            this.txtBxMilRain.Location = new System.Drawing.Point(95, 136);
+            this.txtBxMilRain.Name = "txtBxMilRain";
+            this.txtBxMilRain.Size = new System.Drawing.Size(117, 20);
+            this.txtBxMilRain.TabIndex = 15;
             // 
-            // textBox10
+            // txtBxNumDaysFrost
             // 
-            this.textBox10.Location = new System.Drawing.Point(118, 111);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(94, 20);
-            this.textBox10.TabIndex = 14;
+            this.txtBxNumDaysFrost.Location = new System.Drawing.Point(118, 111);
+            this.txtBxNumDaysFrost.Name = "txtBxNumDaysFrost";
+            this.txtBxNumDaysFrost.Size = new System.Drawing.Size(94, 20);
+            this.txtBxNumDaysFrost.TabIndex = 14;
             // 
-            // textBox9
+            // txtBxMinTemp
             // 
-            this.textBox9.Location = new System.Drawing.Point(95, 87);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(117, 20);
-            this.textBox9.TabIndex = 13;
+            this.txtBxMinTemp.Location = new System.Drawing.Point(95, 87);
+            this.txtBxMinTemp.Name = "txtBxMinTemp";
+            this.txtBxMinTemp.Size = new System.Drawing.Size(117, 20);
+            this.txtBxMinTemp.TabIndex = 13;
             // 
             // label12
             // 
@@ -438,12 +438,12 @@
             this.lbMonthID.TabIndex = 3;
             this.lbMonthID.Text = "Month ID:";
             // 
-            // textBox8
+            // txtBxMaxTemp
             // 
-            this.textBox8.Location = new System.Drawing.Point(95, 63);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(117, 20);
-            this.textBox8.TabIndex = 4;
+            this.txtBxMaxTemp.Location = new System.Drawing.Point(95, 63);
+            this.txtBxMaxTemp.Name = "txtBxMaxTemp";
+            this.txtBxMaxTemp.Size = new System.Drawing.Size(117, 20);
+            this.txtBxMaxTemp.TabIndex = 4;
             // 
             // cmbxSelectToEdit
             // 
@@ -520,11 +520,11 @@
         private System.Windows.Forms.ComboBox cmbxMonthID;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lbMonthID;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtBxMaxTemp;
+        private System.Windows.Forms.TextBox txtBxHoursSun;
+        private System.Windows.Forms.TextBox txtBxMilRain;
+        private System.Windows.Forms.TextBox txtBxNumDaysFrost;
+        private System.Windows.Forms.TextBox txtBxMinTemp;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
