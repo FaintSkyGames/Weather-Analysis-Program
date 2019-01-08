@@ -76,6 +76,7 @@
             this.btnViewGraph.TabIndex = 3;
             this.btnViewGraph.Text = "View Graphs";
             this.btnViewGraph.UseVisualStyleBackColor = true;
+            this.btnViewGraph.Click += new System.EventHandler(this.btnViewGraph_Click);
             // 
             // OptionsForm
             // 

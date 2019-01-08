@@ -42,6 +42,14 @@ namespace assessment
             this.Hide();
         }
 
+        // Load graphs form
+        private void btnViewGraph_Click(object sender, EventArgs e)
+        {
+            Graphs f = new Graphs();
+            f.Show();
+            this.Hide();
+        }
+
         // On form close...
         private void OptionsForm_FormClosed(object sender, FormClosedEventArgs e)
         {

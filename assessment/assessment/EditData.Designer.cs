@@ -268,7 +268,6 @@
             this.btnRemoveLocation.TabIndex = 0;
             this.btnRemoveLocation.Text = "Remove Location";
             this.btnRemoveLocation.UseVisualStyleBackColor = true;
-            this.btnRemoveLocation.Click += new System.EventHandler(this.btnRemoveLocation_Click);
             // 
             // gpBxYear
             // 

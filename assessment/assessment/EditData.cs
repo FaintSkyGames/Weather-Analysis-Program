@@ -323,7 +323,7 @@ namespace assessment
         {
             // Write data to file
             // string fileData = "";
-            StreamWriter sw = new StreamWriter("test.txt");
+            StreamWriter sw = new StreamWriter(Form1.frm1Ref.file);
 
             // Write number of locations to file
             sw.WriteLine(Form1.frm1Ref.numOfLocations);
@@ -378,7 +378,7 @@ namespace assessment
         {
 
             // ...write data to the file...
-            StreamWriter sw = new StreamWriter("test.txt");
+            StreamWriter sw = new StreamWriter(Form1.frm1Ref.file);
 
             // Write number of locations to file
             sw.WriteLine(Form1.frm1Ref.numOfLocations);

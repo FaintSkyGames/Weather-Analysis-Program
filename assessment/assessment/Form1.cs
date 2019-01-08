@@ -94,12 +94,13 @@ namespace assessment
 
                         // Add month to year
                         locations[i].GetYears()[y].SetMonthObs(thisMonth, z);
-
                     }
                 }
-
             }
-            
+
+            // Close file
+             sr.Close();
+
             // Load options form
             OptionsForm f = new OptionsForm();
             f.Show();
