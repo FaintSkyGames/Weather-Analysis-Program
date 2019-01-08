@@ -1,4 +1,5 @@
 ﻿using System;
+// System.IO to allow file access
 using System.IO;
 using System.Windows.Forms;
 
@@ -6,15 +7,22 @@ namespace assessment
 {
     public partial class Form1 : Form
     {
+        // Form referance
         public static Form1 frm1Ref;
-        public int numOfLocations;
+
+        // Location array
         public Location[] locations = new Location[0];
+
+        // Variables
+        public int numOfLocations;
         public string file;
 
-
+        // On load run this
         public Form1()
         {
+            // Assign form referance to this form
             frm1Ref = this;
+
             InitializeComponent();
         }
 
@@ -85,15 +93,14 @@ namespace assessment
                             );
 
                         // Add month to year
-                        locations[i].SetMonths(y, thisMonth, z);
+                        locations[i].GetYears()[y].SetMonthObs(thisMonth, z);
 
                     }
                 }
 
             }
-
-            MessageBox.Show("Everything has been read in.");
-
+            
+            // Load options form
             OptionsForm f = new OptionsForm();
             f.Show();
             this.Hide();

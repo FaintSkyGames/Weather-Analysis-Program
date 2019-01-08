@@ -42,8 +42,10 @@ namespace assessment
             this.Hide();
         }
 
+        // On form close...
         private void OptionsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            // ...close program
             Form1.frm1Ref.Close();
         }
     }

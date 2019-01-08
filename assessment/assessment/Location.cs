@@ -83,11 +83,6 @@ namespace assessment
             years[currentYear] = yearIn;
         }
 
-        public void SetMonths(int currentYear, MonthlyObservation monthIn, int currentMonth)
-        {
-            years[currentYear].SetMonthObs(monthIn, currentMonth);
-        }
-
         //
 
         // Get location name
@@ -133,7 +128,6 @@ namespace assessment
         }
 
         // Get a year
-        // note for self: will need a loop
         public Year[] GetYears()
         {
             return years;

@@ -212,7 +212,7 @@
             this.gpBxYear.TabIndex = 14;
             this.gpBxYear.TabStop = false;
             this.gpBxYear.Text = "Year";
-            this.gpBxYear.Enter += new System.EventHandler(this.gpBxYear_Enter);
+            
             // 
             // lbDescription
             // 
@@ -333,7 +333,7 @@
             this.gpBxMonth.TabIndex = 15;
             this.gpBxMonth.TabStop = false;
             this.gpBxMonth.Text = "Month";
-            this.gpBxMonth.Enter += new System.EventHandler(this.gpBxMonth_Enter);
+            
             // 
             // txtBxHoursSun
             // 
@@ -458,7 +458,7 @@
             this.cmbxSelectToAdd.Name = "cmbxSelectToAdd";
             this.cmbxSelectToAdd.Size = new System.Drawing.Size(121, 21);
             this.cmbxSelectToAdd.TabIndex = 6;
-            this.cmbxSelectToAdd.SelectedIndexChanged += new System.EventHandler(this.cmbxSelectToEdit_SelectedIndexChanged);
+            this.cmbxSelectToAdd.SelectedIndexChanged += new System.EventHandler(this.cmbxSelectToAdd_SelectedIndexChanged);
             // 
             // AddData
             // 
