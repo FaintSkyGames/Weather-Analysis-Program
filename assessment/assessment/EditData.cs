@@ -35,6 +35,7 @@ namespace assessment
             lbYearEdit.Visible = false;
         }
 
+
         // Set combo box items with locations
         private void SetCmbxSelectLocation()
         {
@@ -53,7 +54,7 @@ namespace assessment
             }
         }
 
-        // Set combobox items with years
+        // Set combo box items with years
         private void SetCmbxSelectYear()
         {
             // Clear the combo box items
@@ -175,6 +176,7 @@ namespace assessment
             SetMonthTxtBx();
         }
 
+
         // Set the location data text boxes
         private void SetLocationTxtBx()
         {
@@ -248,28 +250,8 @@ namespace assessment
             }
         }
 
- 
 
-        private void btnRemoveLocation_Click(object sender, EventArgs e)
-        {
-            var confirmResult = MessageBox.Show("Are you sure you want to delete this location?", "Confirm", MessageBoxButtons.YesNo);
-
-            if (confirmResult == DialogResult.Yes)
-            {
-                
-            }
-
-        }
-
-        private void btnSaveYear_Click(object sender, EventArgs e)
-        {
-            Form1.frm1Ref.locations[curLocation].GetYears()[curYear].SetYearID(Convert.ToInt32(txtBxYearID.Text));
-            Form1.frm1Ref.locations[curLocation].GetYears()[curYear].SetDescription(txtBxDescription.Text);
-
-            cmbxSelectYear.SelectedIndex = -1;
-            SetCmbxSelectYear();
-        }
-
+        // Save location
         private void btnSaveLocation_Click(object sender, EventArgs e)
         {
             Boolean errorFound = false;
@@ -305,10 +287,23 @@ namespace assessment
                 Form1.frm1Ref.locations[curLocation].SetLongitude(txtBxLongitude.Text);
 
                 cmbxSelectLocation.SelectedIndex = -1;
+                // Update location combo box
                 SetCmbxSelectLocation();
             }
         }
 
+        // Save year
+        private void btnSaveYear_Click(object sender, EventArgs e)
+        {
+            Form1.frm1Ref.locations[curLocation].GetYears()[curYear].SetYearID(Convert.ToInt32(txtBxYearID.Text));
+            Form1.frm1Ref.locations[curLocation].GetYears()[curYear].SetDescription(txtBxDescription.Text);
+
+            cmbxSelectYear.SelectedIndex = -1;
+            // Update year combo box
+            SetCmbxSelectYear();
+        }
+
+        // Save month
         private void btnSaveMonth_Click(object sender, EventArgs e)
         {
             Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].SetIDNum(Convert.ToInt32(txtBxMonthID.Text));
@@ -319,43 +314,24 @@ namespace assessment
             Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].SetHoursSun(Convert.ToDouble(txtBxHoursSun.Text));
 
             cmbxSelectMonth.SelectedIndex = -1;
+            // Update month combo box
             SetCmbxSelectMonth();
         }
 
-
+        // Load options form
         private void btnMenu_Click(object sender, EventArgs e)
         {
+            // Write data to file
             // string fileData = "";
             StreamWriter sw = new StreamWriter("test.txt");
 
+            // Write number of locations to file
             sw.WriteLine(Form1.frm1Ref.numOfLocations);
 
-            // fileData += Form1.frm1Ref.numOfLocations;
-
+            // For each location...
             foreach (var location in Form1.frm1Ref.locations)
             {
-                sw.WriteLine(location.GetName());
-            }
-
-            sw.Close();
-
-            OptionsForm f = new OptionsForm();
-            f.Show();
-            this.Dispose();
-        }
-
-        private void EditData_FormClosed(object sender, FormClosedEventArgs e)
-        {
-           
-            // string fileData = "";
-            StreamWriter sw = new StreamWriter("test.txt");
-
-            sw.WriteLine(Form1.frm1Ref.numOfLocations);
-
-            // fileData += Form1.frm1Ref.numOfLocations;
-
-            foreach (var location in Form1.frm1Ref.locations)
-            {
+                // ...write it's location data to the file
                 sw.WriteLine(location.GetName());
                 sw.WriteLine(location.GetStreetName());
                 sw.WriteLine(location.GetCountry());
@@ -364,27 +340,88 @@ namespace assessment
                 sw.WriteLine(location.GetLongitude());
                 sw.WriteLine(location.GetNumOfYears());
 
-                foreach(var year in location.GetYears())
+                // For each year...
+                foreach (var year in location.GetYears())
                 {
+                    // ...write it's description to the file
                     sw.WriteLine(year.GetDescription());
 
-                    foreach(var month in year.GetMonthObs())
+                    // For each month...
+                    foreach (var month in year.GetMonthObs())
                     {
+                        // ...write the year ID...
                         sw.WriteLine(year.GetYearID());
-                        
+
+                        // ...and the month data to the file
                         sw.WriteLine(month.GetIDNum());
                         sw.WriteLine(month.GetMaxTemp());
                         sw.WriteLine(month.GetMinTemp());
                         sw.WriteLine(month.GetNumDaysFrost());
                         sw.WriteLine(month.GetMilRain());
-                        sw.WriteLine(month.GetHoursSun());    
+                        sw.WriteLine(month.GetHoursSun());
                     }
                 }
-                
             }
 
+            // Close the writer
             sw.Close();
 
+            // Load options form
+            OptionsForm f = new OptionsForm();
+            f.Show();
+            // Destroy this form without doing close function
+            this.Dispose();
+        }
+
+        // On form close...
+        private void EditData_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+            // ...write data to the file...
+            StreamWriter sw = new StreamWriter("test.txt");
+
+            // Write number of locations to file
+            sw.WriteLine(Form1.frm1Ref.numOfLocations);
+
+            // For each location...
+            foreach (var location in Form1.frm1Ref.locations)
+            {
+                // ...write it's location data to the file
+                sw.WriteLine(location.GetName());
+                sw.WriteLine(location.GetStreetName());
+                sw.WriteLine(location.GetCountry());
+                sw.WriteLine(location.GetPostCode());
+                sw.WriteLine(location.GetLatitude());
+                sw.WriteLine(location.GetLongitude());
+                sw.WriteLine(location.GetNumOfYears());
+
+                // For each year...
+                foreach (var year in location.GetYears())
+                {
+                    // ...write it's description to the file
+                    sw.WriteLine(year.GetDescription());
+
+                    // For each month...
+                    foreach (var month in year.GetMonthObs())
+                    {
+                        // ...write the year ID...
+                        sw.WriteLine(year.GetYearID());
+
+                        // ...and the month data to the file
+                        sw.WriteLine(month.GetIDNum());
+                        sw.WriteLine(month.GetMaxTemp());
+                        sw.WriteLine(month.GetMinTemp());
+                        sw.WriteLine(month.GetNumDaysFrost());
+                        sw.WriteLine(month.GetMilRain());
+                        sw.WriteLine(month.GetHoursSun());
+                    }
+                }
+            }
+
+            // Close the writer
+            sw.Close();
+
+            // ...then close the program.
             Form1.frm1Ref.Close();
         }
     }
