@@ -178,6 +178,7 @@
             this.Controls.Add(this.btnMenu);
             this.Name = "ViewData";
             this.Text = "ViewData";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewData_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -37,11 +37,16 @@ namespace assessment
         {
             OptionsForm f = new OptionsForm();
             f.Show();
-            this.Close();
+            this.Dispose();
         }
 
-        // Add data from a file
-        private void btnAddFile_Click(object sender, EventArgs e)
+        private void AddData_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form1.frm1Ref.Close();
+        }
+
+            // Add data from a file
+            private void btnAddFile_Click(object sender, EventArgs e)
         {
             // Creates a file dialog
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -218,7 +223,7 @@ namespace assessment
         // empty
         private void cmboBxSelectToAddYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            curYear = cmbxSelectToAddYear.SelectedIndex;
         }
 
         private void btnAddInput_Click(object sender, EventArgs e)

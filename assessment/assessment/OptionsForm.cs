@@ -23,7 +23,7 @@ namespace assessment
         {
             ViewData f = new ViewData();
             f.Show();
-            this.Close();
+            this.Hide();
         }
 
         // Load add data form
@@ -31,7 +31,7 @@ namespace assessment
         {
             AddData f = new AddData();
             f.Show();
-            this.Close();
+            this.Hide();
         }
 
         // Load edit data form
@@ -39,7 +39,12 @@ namespace assessment
         {
             EditData f = new EditData();
             f.Show();
-            this.Close();
+            this.Hide();
+        }
+
+        private void OptionsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form1.frm1Ref.Close();
         }
     }
 }

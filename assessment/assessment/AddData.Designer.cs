@@ -31,11 +31,6 @@
             this.btnMenu = new System.Windows.Forms.Button();
             this.gpBxLocation = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.gpBxYear = new System.Windows.Forms.GroupBox();
-            this.lbDescription = new System.Windows.Forms.Label();
-            this.lbYearID = new System.Windows.Forms.Label();
-            this.txtBxDescription = new System.Windows.Forms.TextBox();
-            this.txtBxYearID = new System.Windows.Forms.TextBox();
             this.txtBxLongitude = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtBxLatitude = new System.Windows.Forms.TextBox();
@@ -47,6 +42,11 @@
             this.txtBxCountry = new System.Windows.Forms.TextBox();
             this.txtBxStreet = new System.Windows.Forms.TextBox();
             this.txtBxLocationName = new System.Windows.Forms.TextBox();
+            this.gpBxYear = new System.Windows.Forms.GroupBox();
+            this.lbDescription = new System.Windows.Forms.Label();
+            this.lbYearID = new System.Windows.Forms.Label();
+            this.txtBxDescription = new System.Windows.Forms.TextBox();
+            this.txtBxYearID = new System.Windows.Forms.TextBox();
             this.btnAddFile = new System.Windows.Forms.Button();
             this.btnAddInput = new System.Windows.Forms.Button();
             this.lbAdd = new System.Windows.Forms.Label();
@@ -112,52 +112,6 @@
             this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 13;
             this.label6.Text = "Longitude:";
-            // 
-            // gpBxYear
-            // 
-            this.gpBxYear.Controls.Add(this.lbDescription);
-            this.gpBxYear.Controls.Add(this.lbYearID);
-            this.gpBxYear.Controls.Add(this.txtBxDescription);
-            this.gpBxYear.Controls.Add(this.txtBxYearID);
-            this.gpBxYear.Location = new System.Drawing.Point(24, 167);
-            this.gpBxYear.Name = "gpBxYear";
-            this.gpBxYear.Size = new System.Drawing.Size(218, 254);
-            this.gpBxYear.TabIndex = 14;
-            this.gpBxYear.TabStop = false;
-            this.gpBxYear.Text = "Year";
-            this.gpBxYear.Enter += new System.EventHandler(this.gpBxYear_Enter);
-            // 
-            // lbDescription
-            // 
-            this.lbDescription.AutoSize = true;
-            this.lbDescription.Location = new System.Drawing.Point(6, 66);
-            this.lbDescription.Name = "lbDescription";
-            this.lbDescription.Size = new System.Drawing.Size(63, 13);
-            this.lbDescription.TabIndex = 7;
-            this.lbDescription.Text = "Description:";
-            // 
-            // lbYearID
-            // 
-            this.lbYearID.AutoSize = true;
-            this.lbYearID.Location = new System.Drawing.Point(6, 40);
-            this.lbYearID.Name = "lbYearID";
-            this.lbYearID.Size = new System.Drawing.Size(46, 13);
-            this.lbYearID.TabIndex = 3;
-            this.lbYearID.Text = "Year ID:";
-            // 
-            // txtBxDescription
-            // 
-            this.txtBxDescription.Location = new System.Drawing.Point(95, 63);
-            this.txtBxDescription.Name = "txtBxDescription";
-            this.txtBxDescription.Size = new System.Drawing.Size(117, 20);
-            this.txtBxDescription.TabIndex = 4;
-            // 
-            // txtBxYearID
-            // 
-            this.txtBxYearID.Location = new System.Drawing.Point(95, 37);
-            this.txtBxYearID.Name = "txtBxYearID";
-            this.txtBxYearID.Size = new System.Drawing.Size(117, 20);
-            this.txtBxYearID.TabIndex = 3;
             // 
             // txtBxLongitude
             // 
@@ -245,6 +199,52 @@
             this.txtBxLocationName.Name = "txtBxLocationName";
             this.txtBxLocationName.Size = new System.Drawing.Size(117, 20);
             this.txtBxLocationName.TabIndex = 3;
+            // 
+            // gpBxYear
+            // 
+            this.gpBxYear.Controls.Add(this.lbDescription);
+            this.gpBxYear.Controls.Add(this.lbYearID);
+            this.gpBxYear.Controls.Add(this.txtBxDescription);
+            this.gpBxYear.Controls.Add(this.txtBxYearID);
+            this.gpBxYear.Location = new System.Drawing.Point(24, 167);
+            this.gpBxYear.Name = "gpBxYear";
+            this.gpBxYear.Size = new System.Drawing.Size(218, 254);
+            this.gpBxYear.TabIndex = 14;
+            this.gpBxYear.TabStop = false;
+            this.gpBxYear.Text = "Year";
+            this.gpBxYear.Enter += new System.EventHandler(this.gpBxYear_Enter);
+            // 
+            // lbDescription
+            // 
+            this.lbDescription.AutoSize = true;
+            this.lbDescription.Location = new System.Drawing.Point(6, 66);
+            this.lbDescription.Name = "lbDescription";
+            this.lbDescription.Size = new System.Drawing.Size(63, 13);
+            this.lbDescription.TabIndex = 7;
+            this.lbDescription.Text = "Description:";
+            // 
+            // lbYearID
+            // 
+            this.lbYearID.AutoSize = true;
+            this.lbYearID.Location = new System.Drawing.Point(6, 40);
+            this.lbYearID.Name = "lbYearID";
+            this.lbYearID.Size = new System.Drawing.Size(46, 13);
+            this.lbYearID.TabIndex = 3;
+            this.lbYearID.Text = "Year ID:";
+            // 
+            // txtBxDescription
+            // 
+            this.txtBxDescription.Location = new System.Drawing.Point(95, 63);
+            this.txtBxDescription.Name = "txtBxDescription";
+            this.txtBxDescription.Size = new System.Drawing.Size(117, 20);
+            this.txtBxDescription.TabIndex = 4;
+            // 
+            // txtBxYearID
+            // 
+            this.txtBxYearID.Location = new System.Drawing.Point(95, 37);
+            this.txtBxYearID.Name = "txtBxYearID";
+            this.txtBxYearID.Size = new System.Drawing.Size(117, 20);
+            this.txtBxYearID.TabIndex = 3;
             // 
             // btnAddFile
             // 
@@ -479,6 +479,7 @@
             this.Controls.Add(this.btnMenu);
             this.Name = "AddData";
             this.Text = "AddData";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddData_FormClosed);
             this.gpBxLocation.ResumeLayout(false);
             this.gpBxLocation.PerformLayout();
             this.gpBxYear.ResumeLayout(false);

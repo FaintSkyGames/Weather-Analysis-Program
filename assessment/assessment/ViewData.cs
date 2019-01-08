@@ -27,7 +27,12 @@ namespace assessment
         {
             OptionsForm f = new OptionsForm();
             f.Show();
-            this.Close();
+            this.Dispose();
+        }
+
+        private void ViewData_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form1.frm1Ref.Close();
         }
 
         private void SetCmbxLocations()
@@ -71,16 +76,7 @@ namespace assessment
             {
                 cmbxMonths.Items.Add(month.GetIDNum());
             }
-
-            /*
-            for (int i = 0; i < 12; i++)
-            {
-                if (cmbxMonths.TabIndex. = "0")
-                {
-
-                }
-            }
-            */
+            
 
         }
 
@@ -118,16 +114,24 @@ namespace assessment
         {
             txtBxMonth.Text = "";
             curMonth = cmbxMonths.SelectedIndex;
-            txtBxMonth.AppendText("Month: " + Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetIDNum());
-            txtBxMonth.AppendText(Environment.NewLine);
-            txtBxMonth.AppendText(string.Format(("Tempratures - Max: {0}, Min: {1}"), Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetMaxTemp(), Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetMinTemp()));
-            txtBxMonth.AppendText(Environment.NewLine);
-            txtBxMonth.AppendText("Number of days frost: " + Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetNumDaysFrost());
-            txtBxMonth.AppendText(Environment.NewLine);
-            txtBxMonth.AppendText("Millimeters of rainfall: " + Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetMilRain());
-            txtBxMonth.AppendText(Environment.NewLine);
-            txtBxMonth.AppendText("Hours of sunshine: " + Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetHoursSun());
-            
+
+            if (Form1.frm1Ref.locations[cmbxLocations.SelectedIndex].GetYears()[cmbxYears.SelectedIndex].GetMonthObs()[curMonth].GetIDNum() == 0)
+            {
+                txtBxMonth.AppendText("This month currently has no data. You can add some in the add window.");
+            }
+            else
+            {
+                txtBxMonth.AppendText("Month: " + Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetIDNum());
+                txtBxMonth.AppendText(Environment.NewLine);
+                txtBxMonth.AppendText(string.Format(("Tempratures - Max: {0}, Min: {1}"), Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetMaxTemp(), Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetMinTemp()));
+                txtBxMonth.AppendText(Environment.NewLine);
+                txtBxMonth.AppendText("Number of days frost: " + Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetNumDaysFrost());
+                txtBxMonth.AppendText(Environment.NewLine);
+                txtBxMonth.AppendText("Millimeters of rainfall: " + Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetMilRain());
+                txtBxMonth.AppendText(Environment.NewLine);
+                txtBxMonth.AppendText("Hours of sunshine: " + Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonth].GetHoursSun());
+
+            }
         }
 
         private void txtBxSearch_TextChanged(object sender, EventArgs e)

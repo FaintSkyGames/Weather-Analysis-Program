@@ -88,6 +88,7 @@
             this.Controls.Add(this.btnViewData);
             this.Name = "OptionsForm";
             this.Text = "OptionsForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OptionsForm_FormClosed);
             this.ResumeLayout(false);
 
         }
