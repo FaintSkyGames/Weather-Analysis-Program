@@ -13,7 +13,7 @@ namespace assessment
 {
     public partial class EditData : Form
     {
-
+        // Pointer Variables
         private int curLocation;
         private int curYear;
         private int curMonth;
@@ -35,31 +35,37 @@ namespace assessment
             lbYearEdit.Visible = false;
         }
 
-        // Set combobox items with locations
+        // Set combo box items with locations
         private void SetCmbxSelectLocation()
         {
+            // Clear the combo box items
             cmbxSelectLocation.Items.Clear();
 
-            //point
+            // For each location...
             for (int i = 0; i < Form1.frm1Ref.numOfLocations; i++)
             {
-                //point
+                // ...if the location has data...
                 if (Form1.frm1Ref.locations[i] != null)
                 {
+                    // ...add it to the combo box items
                     cmbxSelectLocation.Items.Add(Form1.frm1Ref.locations[i].GetName());
                 }
-
             }
         }
 
         // Set combobox items with years
         private void SetCmbxSelectYear()
         {
+            // Clear the combo box items
             cmbxSelectYear.Items.Clear();
+
+            // If a location is selected
             if (cmbxSelectLocation.SelectedIndex != -1)
             {
+                // For each year...
                 foreach (var years in Form1.frm1Ref.locations[curLocation].GetYears())
                 {
+                    // ...add to the combo box items
                     cmbxSelectYear.Items.Add(years.GetYearID());
                 }
             }
@@ -68,16 +74,22 @@ namespace assessment
         // Set combo box items with months
         private void SetCmbxSelectMonth()
         {
+            // Clear the combo box items
             cmbxSelectMonth.Items.Clear();
+
+            // If a year is selected
             if (cmbxSelectYear.SelectedIndex != -1)
             {
+                // For each month...
                 foreach (var month in Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs())
                 {
+                    // ...add to the combo box items
                     cmbxSelectMonth.Items.Add(month.GetIDNum());
                 }
             }
 
         }
+
 
         // Shows the appropriate objects based on what you want to edit
         private void cmBxEdit_SelectedIndexChanged(object sender, EventArgs e)

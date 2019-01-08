@@ -144,18 +144,21 @@ namespace assessment
             curYear = cmbxSelectToAddYear.SelectedIndex;
         }
 
-
-
-
+        // Add everything from inputs
         private void btnAddInput_Click(object sender, EventArgs e)
         {
+            // If you want to add a location...
             if (cmbxSelectToAdd.Text == "Location")
             {
+                // ...and it doesn't have an errors...
                 if (ErrorCheckLocation())
                 {
+                    // ...save the location
                     SaveNewLocation();
+                    // Update location combo box
                     SetCmbxSelectToAddLocation();
 
+                    // Clear text boxes
                     txtBxLocationName.Text = "";
                     txtBxStreet.Text = "";
                     txtBxCountry.Text = "";
@@ -163,45 +166,59 @@ namespace assessment
                     txtBxLatitude.Text = "";
                     txtBxLongitude.Text = "";
                 }
-
             }
+            // If you want to add a year...
             else if (cmbxSelectToAdd.Text == "Year")
             {
+                // ...and it doesn't have an errors...
                 if (ErrorCheckYear())
                 {
+                    // If no location is selected...
                     if (cmbxSelectToAddLocation.SelectedIndex == -1)
                     {
+                        // ... show error message
                         MessageBox.Show("Please ensure the Location is selected.");
                     }
                     else
                     {
+                        // ...save the year
                         SaveNewYear();
+                        // Update the year combo box
                         SetCmbxSelectToAddYear();
-
+                        
+                        // Clear text boxes
                         txtBxYearID.Text = "";
                         txtBxDescription.Text = "";
                     }
                 }
 
             }
+            // If you want to add a month...
             else if (cmbxSelectToAdd.Text == "Month")
             {
+                // ...and it doesn't have an errors...
                 if (ErrorCheckMonth())
                 {
+                    // If no location is selected...
                     if (cmbxSelectToAddLocation.SelectedIndex == -1)
                     {
+                        // ...show error message
                         MessageBox.Show("Please ensure the Location is selected.");
                     }
                     else
                     {
+                        // If no year is selected...
                         if (cmbxSelectToAddYear.SelectedIndex == -1)
                         {
+                            // ...show error message
                             MessageBox.Show("Please ensure the Year is selected.");
                         }
                         else
                         {
+                            // ...save the month
                             SaveNewMonth();
 
+                            // Clear text boxes
                             cmbxMonthID.SelectedIndex = -1;
                             txtBxMaxTemp.Text = "";
                             txtBxMinTemp.Text = "";
@@ -215,20 +232,24 @@ namespace assessment
                 }
 
             }
+            // If nothing is selected...
             else
             {
+                // ...show error message
                 MessageBox.Show("Error: Nothing selected.");
             }
 
+            // Write data to file
             // string fileData = "";
             StreamWriter sw = new StreamWriter("test.txt");
 
+            // Write number of locations to file
             sw.WriteLine(Form1.frm1Ref.numOfLocations);
 
-            // fileData += Form1.frm1Ref.numOfLocations;
-
+            // For each location...
             foreach (var location in Form1.frm1Ref.locations)
             {
+                // ...write it's location data to the file
                 sw.WriteLine(location.GetName());
                 sw.WriteLine(location.GetStreetName());
                 sw.WriteLine(location.GetCountry());
@@ -237,14 +258,19 @@ namespace assessment
                 sw.WriteLine(location.GetLongitude());
                 sw.WriteLine(location.GetNumOfYears());
 
+                // For each year...
                 foreach (var year in location.GetYears())
                 {
+                    // ...write it's description to the file
                     sw.WriteLine(year.GetDescription());
 
+                    // For each month...
                     foreach (var month in year.GetMonthObs())
                     {
+                        // ...write the year ID...
                         sw.WriteLine(year.GetYearID());
 
+                        // ...and the month data to the file
                         sw.WriteLine(month.GetIDNum());
                         sw.WriteLine(month.GetMaxTemp());
                         sw.WriteLine(month.GetMinTemp());
@@ -253,143 +279,18 @@ namespace assessment
                         sw.WriteLine(month.GetHoursSun());
                     }
                 }
-
             }
 
+            // Close the writer
             sw.Close();
-
         }
 
-        private void SaveNewLocation()
-        {
-            int curLocationCheck = -1;
-            Boolean duplicateFound = false;
-
-            do
-            {
-                curLocationCheck += 1;
-                if (Form1.frm1Ref.locations[curLocationCheck].GetName() == txtBxLocationName.Text)
-                {
-                    duplicateFound = true;
-                }
-
-            } while (curLocationCheck != Form1.frm1Ref.numOfLocations - 1);
-
-            if (duplicateFound)
-            {
-                MessageBox.Show("There is already a location with this name.");
-            }
-            else
-            {
-                Form1.frm1Ref.numOfLocations += 1;
-                Array.Resize(ref Form1.frm1Ref.locations, (Form1.frm1Ref.numOfLocations));
-
-                Form1.frm1Ref.locations[Form1.frm1Ref.numOfLocations - 1] = new Location(
-                    txtBxLocationName.Text,
-                    txtBxStreet.Text,
-                    txtBxCountry.Text,
-                    txtBxPostcode.Text,
-                    txtBxLatitude.Text,
-                    txtBxLongitude.Text,
-                    0);
-
-            }
-
-        }
-
-        private void SaveNewYear()
-        {
-            int curYearCheck = -1;
-            Boolean duplicateFound = false;
-
-            if (Form1.frm1Ref.locations[curLocation].GetNumOfYears() != 0)
-            {
-                do
-                {
-                    curYearCheck += 1;
-                    if (Form1.frm1Ref.locations[curLocation].GetYears()[curYearCheck].GetYearID() == Convert.ToInt64(txtBxYearID.Text))
-                    {
-                        duplicateFound = true;
-                    }
-
-                } while (curYearCheck != Form1.frm1Ref.locations[curLocation].GetNumOfYears() - 1);
-            }
-
-            if (duplicateFound)
-            {
-                MessageBox.Show("There is already a year with this ID.");
-            }
-            else
-            {
-                Form1.frm1Ref.locations[curLocation].SetNumOfYears(Form1.frm1Ref.locations[curLocation].GetNumOfYears() + 1);
-
-                Year thisYear = new Year(
-                       txtBxDescription.Text,
-                       Convert.ToInt32(txtBxYearID.Text)
-                       );
-
-                Form1.frm1Ref.locations[curLocation].SetYears(thisYear, Form1.frm1Ref.locations[curLocation].GetNumOfYears() - 1);
-
-                MonthlyObservation tempMonth = new MonthlyObservation(
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0
-                    );
-
-                for (int i = 0; i < 12; i++)
-                {
-                    Form1.frm1Ref.locations[curLocation].GetYears()[Form1.frm1Ref.locations[curLocation].GetNumOfYears() - 1].SetMonthObs(tempMonth, i);
-
-                }
-            }
-        }
-
-        private void SaveNewMonth()
-        {
-            int curMonthCheck = -1;
-            Boolean duplicateFound = false;
-
-            do
-            {
-                curMonthCheck += 1;
-                if (Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonthCheck] != null)
-                {
-                    if (Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonthCheck].GetIDNum() == Convert.ToInt64(cmbxMonthID.Text))
-                    {
-                        duplicateFound = true;
-                    }
-                }
-
-
-            } while (curMonthCheck != 11);
-
-            if (duplicateFound)
-            {
-                MessageBox.Show("There is already a month with this ID.");
-            }
-            else
-            {
-                MonthlyObservation thisMonth = new MonthlyObservation(
-                    Convert.ToInt32(cmbxMonthID.Text),
-                    Convert.ToDouble(txtBxMaxTemp.Text),
-                    Convert.ToDouble(txtBxMinTemp.Text),
-                    Convert.ToInt32(txtBxNumDaysFrost.Text),
-                    Convert.ToDouble(txtBxMilRain.Text),
-                    Convert.ToDouble(txtBxHoursSun.Text)
-                    );
-
-                Form1.frm1Ref.locations[curLocation].GetYears()[curYear].SetMonthObs(thisMonth, Convert.ToInt32(cmbxMonthID.Text) - 1);
-            }
-
-        }
-
+        // Check the location data has been entered
         private bool ErrorCheckLocation()
         {
             Boolean errorsFound = false;
 
+            // If anything is left blank there is an error
             if (txtBxLocationName.Text == "")
                 errorsFound = true;
             if (txtBxStreet.Text == "")
@@ -403,8 +304,10 @@ namespace assessment
             if (txtBxLongitude.Text == "")
                 errorsFound = true;
 
+            // If there is an error...
             if (errorsFound)
             {
+                // ... show error message
                 MessageBox.Show("Please make sure everything has been entered");
                 return false;
             }
@@ -412,17 +315,21 @@ namespace assessment
             return true;
         }
 
+        // Check the year data has been entered
         private bool ErrorCheckYear()
         {
             Boolean errorsFound = false;
 
+            // If anything is left blank there is an error
             if (txtBxYearID.Text == "")
                 errorsFound = true;
             if (txtBxDescription.Text == "")
                 errorsFound = true;
 
+            // If there is an error...
             if (errorsFound)
             {
+                // ... show error message
                 MessageBox.Show("Please make sure everything has been entered");
                 return false;
             }
@@ -430,11 +337,12 @@ namespace assessment
             return true;
         }
 
+        // Check the month data has been entered
         private bool ErrorCheckMonth()
         {
             Boolean errorsFound = false;
 
-
+            // If anything is left blank there is an error
             if (cmbxMonthID.SelectedIndex == -1)
                 errorsFound = true;
             if (txtBxMaxTemp.Text == "")
@@ -448,13 +356,173 @@ namespace assessment
             if (txtBxHoursSun.Text == "")
                 errorsFound = true;
 
+            // If there is an error...
             if (errorsFound)
             {
+                // ... show error message
                 MessageBox.Show("Please make sure everything has been entered");
                 return false;
             }
 
             return true;
+        }
+
+        // Save location to array
+        private void SaveNewLocation()
+        {
+            Boolean duplicateFound = false;
+
+            // Pointer Variable
+            int curLocationCheck = -1;
+            
+            // Loop while there are still locations left unchecked
+            do
+            {
+                curLocationCheck += 1;
+                // If the entered location name matches an exsisting name, it is a duplicate
+                if (Form1.frm1Ref.locations[curLocationCheck].GetName() == txtBxLocationName.Text)
+                {
+                    duplicateFound = true;
+                }
+
+            } while (curLocationCheck != Form1.frm1Ref.numOfLocations - 1);
+
+            // If there is a duplicate...
+            if (duplicateFound)
+            {
+                // ... show error message
+                MessageBox.Show("There is already a location with this name.");
+            }
+            // If there are no duplicates
+            else
+            {
+                Form1.frm1Ref.numOfLocations += 1;
+                // Resize the array
+                Array.Resize(ref Form1.frm1Ref.locations, (Form1.frm1Ref.numOfLocations));
+
+                // Add the location to the array
+                // Default number of years to 0
+                Form1.frm1Ref.locations[Form1.frm1Ref.numOfLocations - 1] = new Location(
+                    txtBxLocationName.Text,
+                    txtBxStreet.Text,
+                    txtBxCountry.Text,
+                    txtBxPostcode.Text,
+                    txtBxLatitude.Text,
+                    txtBxLongitude.Text,
+                    0);
+
+            }
+
+        }
+
+        // Save year to array
+        private void SaveNewYear()
+        {
+            Boolean duplicateFound = false;
+
+            // Pointer Variable
+            int curYearCheck = -1;
+
+            // If there are no years in array, skip duplicate checking
+            if (Form1.frm1Ref.locations[curLocation].GetNumOfYears() != 0)
+            {
+                // Loop while there are still years left unchecked
+                do
+                {
+                    curYearCheck += 1;
+                    // If the entered year id matches an exsisting id, it is a duplicate
+                    if (Form1.frm1Ref.locations[curLocation].GetYears()[curYearCheck].GetYearID() == Convert.ToInt64(txtBxYearID.Text))
+                    {
+                        duplicateFound = true;
+                    }
+
+                } while (curYearCheck != Form1.frm1Ref.locations[curLocation].GetNumOfYears() - 1);
+            }
+
+            // If there are duplicates...
+            if (duplicateFound)
+            {
+                // ...show error message
+                MessageBox.Show("There is already a year with this ID.");
+            }
+            // If there are no duplicates...
+            else
+            {
+                Form1.frm1Ref.locations[curLocation].SetNumOfYears(Form1.frm1Ref.locations[curLocation].GetNumOfYears() + 1);
+
+                // ...save year to array
+                Year thisYear = new Year(
+                       txtBxDescription.Text,
+                       Convert.ToInt32(txtBxYearID.Text)
+                       );
+
+                Form1.frm1Ref.locations[curLocation].SetYears(thisYear, Form1.frm1Ref.locations[curLocation].GetNumOfYears() - 1);
+
+                // Create a tempary monthly observation
+                MonthlyObservation tempMonth = new MonthlyObservation(
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                    );
+
+                // Add 12 tempary monthly observations to the array
+                for (int i = 0; i < 12; i++)
+                {
+                    Form1.frm1Ref.locations[curLocation].GetYears()[Form1.frm1Ref.locations[curLocation].GetNumOfYears() - 1].SetMonthObs(tempMonth, i);
+
+                }
+            }
+        }
+
+        // Save month to the array
+        private void SaveNewMonth()
+        {
+            Boolean duplicateFound = false;
+
+            // Pointer Variable
+            int curMonthCheck = -1;
+
+            // Loop while there are still months left unchecked
+            do
+            {
+                curMonthCheck += 1;
+                // If the month has no data, skip duplicate check
+                if (Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonthCheck] != null)
+                {
+                    // If the entered month id matches an exsisting id, it is a duplicate
+                    if (Form1.frm1Ref.locations[curLocation].GetYears()[curYear].GetMonthObs()[curMonthCheck].GetIDNum() == Convert.ToInt64(cmbxMonthID.Text))
+                    {
+                        duplicateFound = true;
+                    }
+                }
+            } while (curMonthCheck != 11);
+
+            // If there is a duplicate...
+            if (duplicateFound)
+            {
+                // ...show error message
+                MessageBox.Show("There is already a month with this ID.");
+            }
+            // If there is no duplicates...
+            else
+            {
+                // ...create a month...
+                MonthlyObservation thisMonth = new MonthlyObservation(
+                    Convert.ToInt32(cmbxMonthID.Text),
+                    Convert.ToDouble(txtBxMaxTemp.Text),
+                    Convert.ToDouble(txtBxMinTemp.Text),
+                    Convert.ToInt32(txtBxNumDaysFrost.Text),
+                    Convert.ToDouble(txtBxMilRain.Text),
+                    Convert.ToDouble(txtBxHoursSun.Text)
+                    );
+
+                // ...and add it to the array
+                Form1.frm1Ref.locations[curLocation].GetYears()[curYear].SetMonthObs(thisMonth, Convert.ToInt32(cmbxMonthID.Text) - 1);
+            }
+
         }
 
         // Add data from a file
